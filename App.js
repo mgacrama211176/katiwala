@@ -23,7 +23,6 @@ export default function App() {
             component={HomeScreen}
             options={{
               headerShown: false,
-              transitionSpec: {},
             }}
           />
           <Stack.Screen name="Login" component={Login} />
