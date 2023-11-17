@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
+import styles from "./styles";
 
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
@@ -15,41 +16,16 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: "white",
-        alignItems: "center",
-      }}
-    >
+    <SafeAreaView style={styles.container}>
       {/* Image */}
-      <View style={{ width: 300, height: 300, marginTop: 100 }}>
-        <Image
-          source={logo}
-          style={{ width: "100%", height: "100%", resizeMode: "contain" }}
-        />
+      <View style={styles.imageContainer}>
+        <Image source={logo} style={styles.imageStyle} />
       </View>
 
       {/* Login Form */}
-      <View
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          gap: 10,
-        }}
-      >
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "col",
-            gap: 10,
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <View style={{ borderWidth: 1, width: 230, borderRadius: 10 }}>
+      <View style={styles.loginFormContainer}>
+        <View style={styles.loginFormWrapper}>
+          <View style={styles.inputStyle}>
             <TextInput
               placeholder="Username"
               style={{ padding: 10 }}
@@ -57,7 +33,7 @@ const Login = () => {
               autoCapitalize="none"
             />
           </View>
-          <View style={{ borderWidth: 1, width: 230, borderRadius: 10 }}>
+          <View style={styles.inputStyle}>
             <TextInput
               placeholder="Password"
               secureTextEntry
@@ -68,22 +44,8 @@ const Login = () => {
         </View>
         {/* Remember Me and Forgot Password */}
         <View style={{ marginVertical: 10 }}>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-around",
-              width: "100%",
-            }}
-          >
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+          <View style={styles.rememberForgotContainer}>
+            <View style={styles.checkBoxContainer}>
               <BouncyCheckbox
                 fillColor="#12B981"
                 value={rememberMe}
@@ -95,43 +57,14 @@ const Login = () => {
               <Text>Forgot Password?</Text>
             </View>
           </View>
-          <TouchableOpacity
-            style={{
-              alignItems: "center",
-              borderWidth: 1,
-              borderColor: "black",
-              borderRadius: 10,
-              justifyContent: "center",
-              width: "60%",
-              height: 40,
-              alignSelf: "center",
-            }}
-          >
+          <TouchableOpacity style={styles.loginButton}>
             <Text>Login</Text>
           </TouchableOpacity>
         </View>
         {/* Register */}
-        <View
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 10,
-          }}
-        >
+        <View style={styles.registerContainer}>
           <Text>Not a Member?</Text>
-          <TouchableOpacity
-            style={{
-              backgroundColor: "#437456",
-              borderWidth: 1,
-              borderColor: "#06C09F",
-              borderRadius: 10,
-              justifyContent: "center",
-              width: "30%",
-              height: 30,
-              alignSelf: "center",
-            }}
-          >
+          <TouchableOpacity style={styles.registerButton}>
             <Text style={{ color: "white", padding: 5, textAlign: "center" }}>
               Sign Up
             </Text>
