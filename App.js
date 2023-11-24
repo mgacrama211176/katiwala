@@ -7,6 +7,7 @@ import "react-native-gesture-handler";
 import HomeScreen from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
+import FaceVerify from "./screens/Register/FaceVerify";
 
 //Navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -32,7 +33,9 @@ export default function App() {
               headerShown: false,
             }}
           />
+
           <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="FaceVerify" component={FaceVerify} />
         </Stack.Navigator>
       </NavigationContainer>
     </RecoilRoot>

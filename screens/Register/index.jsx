@@ -1,10 +1,19 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 
-const Register = () => {
+const Register = ({ navigation }) => {
+  //Navigate to next screen
+  const navigateToNextScreen = () => {
+    //navigate to face verify screen
+    navigation.navigate("FaceVerify");
+  };
   return (
     <View>
       <Text>Register</Text>
+
+      <TouchableOpacity onPress={navigateToNextScreen}>
+        <Text>Next</Text>
+      </TouchableOpacity>
     </View>
   );
 };
