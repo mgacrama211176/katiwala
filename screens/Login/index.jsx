@@ -9,7 +9,6 @@ import {
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import styles from "./styles";
-
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const Login = ({ navigation }) => {

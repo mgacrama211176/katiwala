@@ -19,7 +19,7 @@ const Home = ({ navigation }) => {
         }}
       >
         {/* Image */}
-        <View style={{ width: 400, height: 400, }}>
+        <View style={{ width: 400, height: 400 }}>
           <Image source={logo} style={{ width: "100%", height: "100%" }} />
         </View>
       </View>
