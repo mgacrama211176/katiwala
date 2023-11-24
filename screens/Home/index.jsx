@@ -11,7 +11,7 @@ const Home = ({ navigation }) => {
     }, 3000);
   }, []);
 
-  return (
+  return (  
     <SafeAreaView style={{ flex: 1 }}>
       <View
         style={{
