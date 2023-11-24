@@ -27,7 +27,7 @@ const Home = () => {
             }}
           >  {/* Image */}
           <View >
-            <Image source={logo} style={{width:"100%",height:"100%"}} />
+            <Image source={logo} style={{width:"50%",height:"50%"}} />
           </View>
           
        
