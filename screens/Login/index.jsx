@@ -12,8 +12,13 @@ import styles from "./styles";
 
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [rememberMe, setRememberMe] = useState(false);
+
+  const navigateToRegister = () => {
+    //navigate to register screen
+    navigation.navigate("Register");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -64,7 +69,10 @@ const Login = () => {
         {/* Register */}
         <View style={styles.registerContainer}>
           <Text>Not a Member?</Text>
-          <TouchableOpacity style={styles.registerButton}>
+          <TouchableOpacity
+            style={styles.registerButton}
+            onPress={navigateToRegister}
+          >
             <Text style={{ color: "white", padding: 5, textAlign: "center" }}>
               Sign Up
             </Text>
