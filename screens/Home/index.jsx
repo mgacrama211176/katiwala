@@ -1,46 +1,28 @@
-import { View,  SafeAreaView, Image } from "react-native";
-import React from "react";
+import { View, SafeAreaView, Image } from "react-native";
+import React, { useEffect } from "react";
 import logo from "../../assets/logo.png";
+const Home = ({ navigation }) => {
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     //navigate to login screen
+  //     navigation.navigate("Login");
+  //   }, 3000);
+  // }, []);
 
-const Home = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      
-      
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <View
-            style={{
-              width: 650,
-              height: 650,
-              borderRadius: 700 / 2,
-              backgroundColor: "white",
-              alignItems: "center",
-              justifyContent: "center",
-              borderWidth: 1,
-              borderColor: "white",
-            }}
-          >  {/* Image */}
-          <View >
-            <Image source={logo} style={{width:"50%",height:"50%"}} />
-          </View>
-          
-       
-             
-            
-              
-           
-           
-             
-            
-          </View>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {/* Image */}
+        <View style={{ width: 400, height: 400, }}>
+          <Image source={logo} style={{ width: "100%", height: "100%" }} />
         </View>
-      
+      </View>
     </SafeAreaView>
   );
 };
