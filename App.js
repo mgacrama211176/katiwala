@@ -18,13 +18,13 @@ export default function App() {
     <RecoilRoot>
       <NavigationContainer>
         <Stack.Navigator>
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Home"
             component={HomeScreen}
             options={{
               headerShown: false,
             }}
-          /> */}
+          />
           <Stack.Screen
             name="Login"
             component={Login}
