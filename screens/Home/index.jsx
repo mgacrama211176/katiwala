@@ -2,12 +2,12 @@ import { View, SafeAreaView, Image } from "react-native";
 import React, { useEffect } from "react";
 import logo from "../../assets/logo.png";
 const Home = ({ navigation }) => {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     //navigate to login screen
-  //     navigation.navigate("Login");
-  //   }, 3000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      //navigate to login screen
+      navigation.navigate("Login");
+    }, 3000);
+  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
