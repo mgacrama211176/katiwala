@@ -1,6 +1,7 @@
 import { View, SafeAreaView, Image } from "react-native";
 import React, { useEffect } from "react";
 import logo from "../../assets/logo.png";
+
 const Home = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
