@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Camera, CameraType } from "expo-camera";
 import * as FaceDetector from "expo-face-detector";
 import Icon from "react-native-vector-icons/Feather";
+import { globalStyles } from "../../globalStyles/globalStyles";
 
 const FaceVerify = () => {
   const [type, setType] = useState(CameraType.front);
@@ -11,7 +12,7 @@ const FaceVerify = () => {
   const cameraReff = useRef(null);
   const [message, setMessage] = useState({
     text: "",
-    code: 0,
+    code: false,
   });
 
   useEffect(() => {
@@ -25,15 +26,26 @@ const FaceVerify = () => {
     // console.log(faces);
   };
 
+  //Camera logic. Will return the URI of the image taken
   const takeAPicture = async () => {
     try {
       if (cameraReff) {
         const data = await cameraReff.current.takePictureAsync(null);
         setImage(data.uri);
-        setMessage({ text: "Image captured", code: 1 });
+        setMessage({ text: "Image captured", code: true });
       }
     } catch (err) {
-      setMessage({ text: "Error taking picture", code: 0 });
+      setMessage({ text: "Error taking picture", code: false });
+    }
+  };
+
+  //After Image capture is successful, we can navigate to the next step
+  const onPressNextStep = () => {
+    //if the message.code is  === true, then we can navigate to the next step
+    if (!message.code) {
+      console.log("Error taking picture");
+    } else {
+      console.log("Proceed to next step");
     }
   };
 
@@ -67,8 +79,12 @@ const FaceVerify = () => {
           </TouchableOpacity>
         </Camera>
         <Text style={{ textAlign: "center", padding: 10 }}>{message.text}</Text>
-        <TouchableOpacity style={{}}>
-          <Text>Next Step</Text>
+        <TouchableOpacity
+          style={globalStyles.greenButton}
+          disabled={!message.code}
+          onPress={() => onPressNextStep}
+        >
+          <Text style={globalStyles.greenButtonText}>Next Step</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -104,15 +120,6 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     flexDirection: "row",
     margin: 20,
-  },
-  button: {
-    flex: 0.1,
-    alignSelf: "flex-end",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 18,
-    color: "white",
   },
 });
 
