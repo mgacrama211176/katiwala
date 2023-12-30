@@ -36,6 +36,7 @@ const FaceVerify = () => {
       setMessage({ text: "Error taking picture", code: 0 });
     }
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.cameraWrapper}>
