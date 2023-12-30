@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import styles from "./styles";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { globalStyles } from "../../globalStyles/globalStyles";
 
 const Login = ({ navigation }) => {
   const [rememberMe, setRememberMe] = useState(false);
@@ -69,12 +70,10 @@ const Login = ({ navigation }) => {
         <View style={styles.registerContainer}>
           <Text>Not a Member?</Text>
           <TouchableOpacity
-            style={styles.registerButton}
+            style={globalStyles.greenButton}
             onPress={navigateToRegister}
           >
-            <Text style={{ color: "white", padding: 5, textAlign: "center" }}>
-              Sign Up
-            </Text>
+            <Text style={globalStyles.greenButtonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
       </View>
