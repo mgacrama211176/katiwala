@@ -1,4 +1,4 @@
- import { View, Text, TouchableOpacity,Image,TextInput,setRememberMe,rememberMe,navigateToRegister} from "react-native";
+ import { View, Text, TouchableOpacity,Image,TextInput,setRememberMe,rememberMe,navigateToRegister,Button} from "react-native";
  import React from "react";
  import { SafeAreaView } from "react-native-safe-area-context";
  import logo from "../../assets/logo.png";
@@ -12,7 +12,7 @@
    };   
    return (   
     <SafeAreaView style={{ flex: 1,
-                  backgroundColor: "white",
+                  backgroundColor: "white", 
                   alignItems: "center",}}>
                 {/* Image */}
                 <View style={{ width: 300,
@@ -36,7 +36,7 @@
                 flexDirection: "col",
                 gap: 10,
                 width: "100%",
-                justifyContent: "center",
+                justifyContent: "center",     
                 alignItems: "center", 
               
               }}>
@@ -95,26 +95,126 @@
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-around",
-                width: "100%",
+                width: "80%",
               }}>
                       <View style={ {
                 display: "flex",
                 flexDirection: "center",
                 justifyContent: "center",
                 alignItems: "center",
-                Text:"center",
-              
+                Text:"center",             
               }}>                  
           </View>
           <View>
-            <Text>Password did not match</Text>
+            <Text>Password did not match</Text> 
+            <View style={ {
+                             display: "flex",
+                             justifyContent: "center",
+                             alignItems: "center",
+                            gap: 10,
+             }}>
+           
+            <TouchableOpacity
+            style={{
+               backgroundColor: "#437456",
+               borderWidth: 1,
+               borderColor: "#06C09F",
+               borderRadius: 10,
+               width: "100%", 
+              alignSelf: "center",
+              display: "flex",
+              flexDirection: "col",
+              gap: 10,
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center", 
+             
+           }
+            }
+             onPress={navigateToNextScreen}
+  >
+            <Text style={{ color: "white", padding: 10, textAlign: "center" }}>
+                  Next
+            </Text>
+           </TouchableOpacity>
+          </View>          
           </View>
         </View> 
       </View>
-    </View>
-  </SafeAreaView>
+         </View>
+    </SafeAreaView>
+    
         
   );
   };
 
  export default Register;
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
