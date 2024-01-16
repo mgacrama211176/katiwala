@@ -8,6 +8,7 @@ import HomeScreen from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
 import FaceVerify from "./screens/Register/FaceVerify";
+import FileUploadCapture from "./screens/Register/FileUploadCapture";
 
 //Navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -36,6 +37,10 @@ export default function App() {
 
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="FaceVerify" component={FaceVerify} />
+          <Stack.Screen
+            name="FileUploadCapture"
+            component={FileUploadCapture}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </RecoilRoot>
