@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import * as DocumentPicker from "expo-document-picker";
 import { Touchable } from "react-native";
 
@@ -9,6 +9,12 @@ const FileUploadCapture = () => {
     let result = await DocumentPicker.getDocumentAsync({});
     setUploadedData(result);
   };
+
+  const formData = new FormData();
+  formData.append("file", {
+    name: uploadedData.name,
+    type: uploadedData.type,
+  });
 
   return (
     <View style={styles.container}>
