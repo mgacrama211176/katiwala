@@ -3179,6 +3179,11 @@ expo-constants@~14.4.2:
     "@expo/config" "~8.1.0"
     uuid "^3.3.2"
 
+expo-document-picker@~11.5.4:
+  version "11.5.4"
+  resolved "https://registry.yarnpkg.com/expo-document-picker/-/expo-document-picker-11.5.4.tgz#11c274d1a2f4aa1f0ca7c0403ca02017a20d832e"
+  integrity sha512-4lpRixi33kjoQQy9lfrGs48yFRMOgBgdnqjYWVFe85WFy/WkEoFC2E8usxcFdrIigtfy9Z+HY3/je4lHEYqyLg==
+
 expo-face-detector@~12.2.0:
   version "12.2.0"
   resolved "https://registry.yarnpkg.com/expo-face-detector/-/expo-face-detector-12.2.0.tgz#0226b564839dcb3d54b3268196e67b66b1e99edf"

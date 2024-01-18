@@ -14,6 +14,7 @@ const FaceVerify = ({ navigation }) => {
     text: "Press the camera to take a selfie",
     code: false,
   });
+  const [faceDetected, setFaceDetected] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -23,11 +24,19 @@ const FaceVerify = ({ navigation }) => {
   }, []);
 
   const handleFacesDetected = ({ faces }) => {
-    // console.log(faces);
+    if (faces.length > 0) {
+      setFaceDetected(true);
+    } else {
+      setFaceDetected(false);
+    }
   };
 
   //Camera logic. Will return the URI of the image taken
   const takeAPicture = async () => {
+    if (!faceDetected) {
+      setMessage({ text: "No face detected", code: false });
+      return;
+    }
     try {
       if (cameraReff) {
         const data = await cameraReff.current.takePictureAsync(null);
