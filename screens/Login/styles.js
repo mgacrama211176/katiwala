@@ -63,16 +63,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
   },
-  registerButton: {
-    backgroundColor: "#437456",
-    borderWidth: 1,
-    borderColor: "#06C09F",
-    borderRadius: 10,
-    justifyContent: "center",
-    width: "30%",
-    height: 30,
-    alignSelf: "center",
-  },
 });
 
 export default styles;
