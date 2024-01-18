@@ -2,25 +2,16 @@
  import React from "react";
  import { SafeAreaView } from "react-native-safe-area-context";
  import logo from "../../assets/logo.png";
- import React, { useState } from 'react';
- import {SafeAreaView}from "react-native-safe-area-context";
- import React, {useState} from 'react' 
- import PhoneInput from 'react-phone-number-input/input'
- 
- 
+
 
 
  const Register = ({ navigation,phone }) => {
   //Navigate to next screen
    const navigateToNextScreen = () => {
     //navigate to face verify screen
-     navigation.navigate("FaceVerify");
+     navigation.navigate("FaceVerify")
 
-     function Example() {
-      const [value, setValue] = useState()
-      return 
-  
-   }};   
+   };   
    return (   
     <SafeAreaView style={{ flex: 0,
                   backgroundColor: "white", 
@@ -113,7 +104,7 @@
                 alignItems: "left",
                 
               }}>
-                <PhoneInput
+                <TextInput
                 placeholder=" Enter phone number"
                  style={{ padding: 10 }}
                // always set phone number type: tel, max 12 digits
@@ -232,6 +223,7 @@
         
   );
   };
+
 
  export default Register;
 
