@@ -1,7 +1,8 @@
- import { View, Text, TouchableOpacity,Image,TextInput,setRememberMe,rememberMe,navigateToRegister,Button} from "react-native";
+ import { View, Text, TouchableOpacity,Image,TextInput,setRememberMe,rememberMe,navigateToRegister,Button,value} from "react-native";
  import React from "react";
  import { SafeAreaView } from "react-native-safe-area-context";
  import logo from "../../assets/logo.png";
+
 
 
 
@@ -23,7 +24,7 @@
                 }}>
                   <Image source={{
                 width: "100%",
-                height: "100%",
+                height: "100%", 
                 resizeMode: "contain",
               }} />
                 </View>
@@ -106,6 +107,7 @@
               }}>
                 <TextInput
                 placeholder=" Enter phone number"
+                value={value}
                  style={{ padding: 10 }}
                // always set phone number type: tel, max 12 digits
                 autoCapitalize="none"
@@ -144,6 +146,7 @@
                 borderWidth: 1,
                 width: 230,
                 borderRadius: 10,
+                
               }}>
                       <TextInput
                         placeholder="Password"
