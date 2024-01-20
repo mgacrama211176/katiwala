@@ -1,27 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import * as DocumentPicker from "expo-document-picker";
-import { Touchable } from "react-native";
 
 const FileUploadCapture = () => {
-  const [uploadedData, setUploadedData] = useState(null);
-  const uploadDocumentOnPress = async () => {
-    let result = await DocumentPicker.getDocumentAsync({});
-    setUploadedData(result);
-  };
+  const [uploadedData, setUploadedData] = useState("");
 
-  const formData = new FormData();
-  formData.append("file", {
-    name: uploadedData.name,
-    type: uploadedData.type,
-  });
+  const uploadDocumentOnPress = async () => {
+    console.log(`data`);
+    let documentResurl = await DocumentPicker.getDocumentAsync({});
+    console.log(documentResurl);
+  };
 
   return (
     <View style={styles.container}>
       <Text>Upload Documents</Text>
-      <Touchable onPress={() => uploadDocumentOnPress}>
+      <TouchableOpacity onPress={uploadDocumentOnPress}>
         <Text>Upload File</Text>
-      </Touchable>
+      </TouchableOpacity>
     </View>
   );
 };
