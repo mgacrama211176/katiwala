@@ -1,39 +1,88 @@
- import { View, Text, TouchableOpacity,Image,TextInput,setRememberMe,rememberMe,navigateToRegister,Button,value} from "react-native";
+ import { View, Text,TouchableOpacity,Image,TextInput,setRememberMe,rememberMe,navigateToRegister,Button,value} from "react-native";
  import React from "react";
  import { SafeAreaView } from "react-native-safe-area-context";
  import logo from "../../assets/logo.png";
 
-
-
-
- const Register = ({ navigation,phone }) => {
+ const Register = ({ navigation }) => {
   //Navigate to next screen
    const navigateToNextScreen = () => {
     //navigate to face verify screen
      navigation.navigate("FaceVerify")
-
    };   
    return (   
-    <SafeAreaView style={{ flex: 0,
-                  backgroundColor: "white", 
+    <SafeAreaView style={{ flex: 1,
                   alignItems: "center",}}>
                 {/* Image */}
                 <View style={{ width: 300,
                 height: 110,
-                marginTop: -90,
+                marginTop: -120,
+                flexDirection: "row",
                 }}>
-                  <Image source={{
-                width: "100%",
-                height: "100%", 
-                resizeMode: "contain",
-              }} />
                 </View>
-
                 {/* Login Form */}
+                <Text>𝐂𝐑𝐄𝐀𝐓𝐄 𝐀𝐂𝐂𝐎𝐔𝐍𝐓</Text>
+                <TouchableOpacity
+            style={{
+               backgroundColor: "#437456",
+               borderWidth: 1,
+               borderColor: "#06C09F",
+               borderRadius: 10,
+               width: "100%", 
+              alignSelf: "",
+              display: "flex",
+              flexDirection: "col",
+              gap: 10,
+              width: "100%",
+              justifyContent: "center",
+              gap:10,
+              alignItems: "center", 
+              width:115,
+              marginVertical: 0,
+              flexDirection: "row",
+              justifyContent: "space-around",
+             
+           }
+            }
+            
+             onPress={navigateToNextScreen}
+  >
+            <Text style={{ color: "white", padding: 10, textAlign: "left" }}>
+                  Amo
+            </Text>
+            
+           </TouchableOpacity>
+           <TouchableOpacity 
+           style={{
+            backgroundColor:"#437456",
+            borderWidth: 1,
+            borderColor: "#06C09F",
+            borderRadius: 10,
+            width: "100%", 
+           alignSelf: "",
+           display: "flex",
+           flexDirection: "col",
+           gap: 10,
+           width: "100%",
+           justifyContent: "center",
+           gap:10,
+           alignItems: "center", 
+           width:115,
+           marginVertical: 10 ,
+           flexDirection: "row",
+           justifyContent: "space-around",
+                       
+           }}
+          onPress={navigateToNextScreen}>
+                 <Text style={{ color: "white", padding: 10, textAlign: "left" }}>
+           Empleyado
+     </Text>
+          </TouchableOpacity>
+                
+
                 <View style={{width: "100%",
                 display: "flex",
                 justifyContent: "center",
-                gap: 20,}}>
+                gap: 10,}}>
                   <View style={{
                 display: "flex",
                 flexDirection: "col",
@@ -41,8 +90,9 @@
                 width: "100%",
                 justifyContent: "center",     
                 alignItems: "center", 
-              
+                        
               }}>
+                
                     <View style={{
                 borderWidth: 1,
                 width: 230,
@@ -107,8 +157,7 @@
               }}>
                 <TextInput
                 placeholder=" Enter phone number"
-                value={value}
-                 style={{ padding: 10 }}
+                style={{padding:10}}
                // always set phone number type: tel, max 12 digits
                 autoCapitalize="none"
                    />
@@ -221,14 +270,11 @@
         </View> 
       </View>
          </View>
-    </SafeAreaView>
-    
-        
+    </SafeAreaView>  
   );
   };
-
-
  export default Register;
+ 
 
  
  
