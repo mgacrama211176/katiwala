@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Text } from "react-native";
 import { RecoilRoot } from "recoil";
 import "react-native-gesture-handler";
 
@@ -33,6 +32,11 @@ const Stack = createStackNavigator();
 export default function App() {
   const [fontsLoaded] = useFonts({
     QuattrocentoSans_400Regular,
+    QuattrocentoSans_700Bold,
+    RobotoSlab_400Regular,
+    RobotoSlab_700Bold,
+    Yantramanav_400Regular,
+    Yantramanav_700Bold,
   });
 
   if (!fontsLoaded) {
