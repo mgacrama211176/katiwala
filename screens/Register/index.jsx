@@ -1,84 +1,51 @@
- import { View, Text,TouchableOpacity,Image,TextInput,setRememberMe,rememberMe,navigateToRegister,Button,value} from "react-native";
+ import { View, Text,onPress,TouchableOpacity,Image,setState,TextInput,colors,setRememberMe,rememberMe,navigateToRegister,Button,Toggle,value} from "react-native";
  import React from "react";
  import { SafeAreaView } from "react-native-safe-area-context";
  import logo from "../../assets/logo.png";
+ import SwitchSelector from "react-native-switch-selector";
+ 
+
 
  const Register = ({ navigation }) => {
   //Navigate to next screen
    const navigateToNextScreen = () => {
     //navigate to face verify screen
      navigation.navigate("FaceVerify")
+     const options = [
+      { label: "Amo", value: "Amo" },
+      { label: "Empleyado", value: "Empeyado" },
+     
+     
+    ];
    };   
    return (   
-    <SafeAreaView style={{ flex: 1,
+    <SafeAreaView style={{flex: 1,
                   alignItems: "center",}}>
-                {/* Image */}
+                    {/*create account*/}
                 <View style={{ width: 300,
                 height: 110,
-                marginTop: -120,
-                flexDirection: "row",
+                marginTop: -120, 
+                buttom: 120,    
                 }}>
-                </View>
-                {/* Login Form */}
-                <Text>𝐂𝐑𝐄𝐀𝐓𝐄 𝐀𝐂𝐂𝐎𝐔𝐍𝐓</Text>
-                <TouchableOpacity
+                </View>                
+                  <Text>
+                  𝐂𝐫𝐞𝐚𝐭𝐞 𝐚𝐧 𝐀𝐜𝐜𝐨𝐮𝐧𝐭
+                  </Text>
+                  <SwitchSelector
             style={{
-               backgroundColor: "#437456",
-               borderWidth: 1,
-               borderColor: "#06C09F",
-               borderRadius: 10,
-               width: "100%", 
-              alignSelf: "",
-              display: "flex",
-              flexDirection: "col",
-              gap: 10,
-              width: "100%",
-              justifyContent: "center",
-              gap:10,
-              alignItems: "center", 
-              width:115,
-              marginVertical: 0,
-              flexDirection: "row",
-              justifyContent: "space-around",
-             
-           }
+          margin:10,
+               }
             }
-            
-             onPress={navigateToNextScreen}
-  >
-            <Text style={{ color: "white", padding: 10, textAlign: "left" }}>
-                  Amo
-            </Text>
-            
-           </TouchableOpacity>
-           <TouchableOpacity 
-           style={{
-            backgroundColor:"#437456",
-            borderWidth: 1,
-            borderColor: "#06C09F",
-            borderRadius: 10,
-            width: "100%", 
-           alignSelf: "",
-           display: "flex",
-           flexDirection: "col",
-           gap: 10,
-           width: "100%",
-           justifyContent: "center",
-           gap:10,
-           alignItems: "center", 
-           width:115,
-           marginVertical: 10 ,
-           flexDirection: "row",
-           justifyContent: "space-around",
-                       
-           }}
-          onPress={navigateToNextScreen}>
-                 <Text style={{ color: "white", padding: 10, textAlign: "left" }}>
-           Empleyado
-     </Text>
-          </TouchableOpacity>
-                
-
+             options={[
+              { label: "Amo", value: "Amo"},
+              { label: "Empleyado", value: "Empleyado",}   
+             ]}
+             testID="options"
+             initial={0}
+             onPress={value => alert(value)}
+             buttonColor={"#437456"}       
+             />                 
+                {/*togglebutton*/}
                 <View style={{width: "100%",
                 display: "flex",
                 justifyContent: "center",
@@ -97,7 +64,9 @@
                 borderWidth: 1,
                 width: 230,
                 borderRadius: 10,
-                alignItems: "left", 
+                alignItems: "left",
+                
+                 
               }}>
                 <TextInput
                 placeholder="First Name "
@@ -273,7 +242,9 @@
     </SafeAreaView>  
   );
   };
+  
  export default Register;
+ 
  
 
  
