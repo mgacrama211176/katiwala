@@ -8,7 +8,7 @@
 
  const Register = ({ navigation }) => {
   //Navigate to next screen
-   const navigateToNextScreen = () => {
+  const navigateToNextScreen = () => {
     //navigate to face verify screen
      navigation.navigate("FaceVerify")
      const options = [

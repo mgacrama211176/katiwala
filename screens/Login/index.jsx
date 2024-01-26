@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import styles from "./styles";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { globalStyles } from "../../globalStyles/globalStyles";
 
 const Login = ({ navigation }) => {
   const [rememberMe, setRememberMe] = useState(false);
@@ -31,21 +32,32 @@ const Login = ({ navigation }) => {
         <View style={styles.loginFormWrapper}>
           <View style={styles.inputStyle}>
             <TextInput
-              placeholder="Username"
-              style={{ padding: 10 }}
+              placeholder="11 Digit Phone Number"
+              style={styles.textInputStyle}
               // always set text to smallcase
               autoCapitalize="none"
+              keyboardType="numeric"
+              maxLength={11}
             />
           </View>
           <View style={styles.inputStyle}>
             <TextInput
               placeholder="Password"
               secureTextEntry
-              style={{ padding: 10 }}
+              style={styles.textInputStyle}
               autoCapitalize="none"
             />
           </View>
         </View>
+        <Text
+          style={{
+            textAlign: "center",
+            color: "red",
+            fontFamily: "Yantramanav_400Regular",
+          }}
+        >
+          Incorrect Password
+        </Text>
         {/* Remember Me and Forgot Password */}
         <View style={{ marginVertical: 10 }}>
           <View style={styles.rememberForgotContainer}>
@@ -55,26 +67,51 @@ const Login = ({ navigation }) => {
                 value={rememberMe}
                 onValueChange={setRememberMe}
               />
-              <Text>Remember Me</Text>
+              <Text
+                style={{
+                  fontFamily: "QuattrocentoSans_400Regular",
+                  fontSize: 14,
+                }}
+              >
+                Remember Me
+              </Text>
             </View>
             <View>
-              <Text>Forgot Password?</Text>
+              <Text
+                style={{
+                  fontFamily: "QuattrocentoSans_400Regular",
+                  fontSize: 14,
+                }}
+              >
+                Forgot Password?
+              </Text>
             </View>
           </View>
           <TouchableOpacity style={styles.loginButton}>
-            <Text>Login</Text>
+            <Text
+              style={{
+                color: "#12B981",
+                fontFamily: "Yantramanav_700Bold",
+                fontSize: 18,
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+              }}
+            >
+              Login
+            </Text>
           </TouchableOpacity>
         </View>
         {/* Register */}
         <View style={styles.registerContainer}>
           <Text>Not a Member?</Text>
           <TouchableOpacity
-            style={styles.registerButton}
+            style={globalStyles.greenButton}
             onPress={navigateToRegister}
           >
-            <Text style={{ color: "white", padding: 5, textAlign: "center" }}>
-              Sign Up
-            </Text>
+            <Text style={globalStyles.greenButtonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
       </View>
