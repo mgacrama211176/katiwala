@@ -5384,6 +5384,13 @@ react-native-safe-area-context@4.6.3:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.6.3.tgz#f06cfea05b1c4b018aa9758667a109f619c62b55"
   integrity sha512-3CeZM9HFXkuqiU9HqhOQp1yxhXw6q99axPWrT+VJkITd67gnPSU03+U27Xk2/cr9XrLUnakM07kj7H0hdPnFiQ==
 
+react-native-switch-selector@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-switch-selector/-/react-native-switch-selector-2.3.0.tgz#1f87758cf973da947cae8c8a8062fa7a8f701992"
+  integrity sha512-BnhbC7vRu5HIanANszNS5rbrXqYwDggJGg/Xik2NXDA1FSzId/WrxU5hicmmZzTrQSh9N5TS76YsnG1swNzBpA==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native@0.72.6:
   version "0.72.6"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.72.6.tgz#9f8d090694907e2f83af22e115cc0e4a3d5fa626"
