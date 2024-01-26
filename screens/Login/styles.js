@@ -35,6 +35,11 @@ const styles = StyleSheet.create({
     width: 230,
     borderRadius: 10,
   },
+
+  textInputStyle: {
+    padding: 10,
+    fontFamily: "QuattrocentoSans_400Regular",
+  },
   rememberForgotContainer: {
     display: "flex",
     flexDirection: "row",
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
   loginButton: {
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "#437456",
     borderRadius: 10,
     justifyContent: "center",
     width: "60%",
