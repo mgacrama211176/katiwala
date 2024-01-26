@@ -15,9 +15,18 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 //fonts
 import { useFonts } from "expo-font";
-import { QuattrocentoSans_400Regular } from "@expo-google-fonts/quattrocento-sans";
-import { RobotoSlab_400Regular } from "@expo-google-fonts/roboto-slab";
-import { Yantramanav_400Regular } from "@expo-google-fonts/yantramanav";
+import {
+  QuattrocentoSans_400Regular,
+  QuattrocentoSans_700Bold,
+} from "@expo-google-fonts/quattrocento-sans";
+import {
+  RobotoSlab_400Regular,
+  RobotoSlab_700Bold,
+} from "@expo-google-fonts/roboto-slab";
+import {
+  Yantramanav_400Regular,
+  Yantramanav_700Bold,
+} from "@expo-google-fonts/yantramanav";
 
 const Stack = createStackNavigator();
 
