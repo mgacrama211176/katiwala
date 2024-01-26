@@ -1170,6 +1170,21 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
+"@expo-google-fonts/quattrocento-sans@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/quattrocento-sans/-/quattrocento-sans-0.2.3.tgz#704eb235e928bcf6449a949010136402a76d4eb8"
+  integrity sha512-310iFZC439nUZb/J8nlXuGZtGwmgBgI3oYnj98xmZeRg/OU4u2rVUT5mdTepyLGP9n7Ym8NEftG8wCqd+m6Piw==
+
+"@expo-google-fonts/roboto-slab@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto-slab/-/roboto-slab-0.2.3.tgz#5497f37224af3f75c20b4749c6c6bafdf37cc54d"
+  integrity sha512-CnjetZ1wG0Vp1gH63GvUMo1ly0Agd+9GsKro24oB2cqpPS6hKzKOnT0btsYfGUB2/DqngB5AN7e56F+XLf4MCg==
+
+"@expo-google-fonts/yantramanav@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/yantramanav/-/yantramanav-0.2.3.tgz#a2e23db0987e8b72976f21011bb35348095f29db"
+  integrity sha512-mJAOWBb8qRihwYaXpFV4LJqmMzdquK2o2i108gA9yoTmPY95BZ7x2nJmJ7htg7jJ9U93Hgl8zAUOLyKasIhCnQ==
+
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@expo/bunyan/-/bunyan-4.0.0.tgz#be0c1de943c7987a9fbd309ea0b1acd605890c7b"

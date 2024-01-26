@@ -9,7 +9,13 @@ const Register = ({ navigation }) => {
   };
   return (
     <View>
-      <Text>Register</Text>
+      <Text
+        style={{
+          fontFamily: "QuattrocentoSans_400Regular",
+        }}
+      >
+        Register
+      </Text>
 
       <TouchableOpacity onPress={navigateToNextScreen}>
         <Text>Next</Text>
