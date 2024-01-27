@@ -15,20 +15,25 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.marlonz2.katiwala"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       [
-        "expo-camera",  
+        "expo-camera",
         {
           "cameraPermission": "Allow KATIWALA to access your camera."
         }
@@ -36,7 +41,7 @@
       [
         "expo-document-picker",
         {
-          "iCloudContainerEnvironment":"Production"
+          "iCloudContainerEnvironment": "Production"
         }
       ]
     ]
