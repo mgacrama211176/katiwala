@@ -3,10 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Camera, CameraType } from "expo-camera";
 import * as FaceDetector from "expo-face-detector";
 import Icon from "react-native-vector-icons/Feather";
-import { globalStyles } from "../../globalStyles/globalStyles";
 
 const FaceVerify = ({ navigation }) => {
-  const [type, setType] = useState(CameraType.front);
   const [permission, setPermission] = useState(null);
   const [image, setImage] = useState(null);
   const cameraReff = useRef(null);
@@ -16,10 +14,17 @@ const FaceVerify = ({ navigation }) => {
   });
   const [faceDetected, setFaceDetected] = useState(false);
 
+  console.log(permission);
+
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
-      setPermission(status === "granted");
+
+      if (status !== "granted") {
+        alert("Sorry, we need camera permissions to make this work!");
+      } else {
+        setPermission(status === "granted");
+      }
     })();
   }, []);
 
@@ -51,6 +56,10 @@ const FaceVerify = ({ navigation }) => {
     }
   };
 
+  if (permission === null) {
+    return <View />;
+  }
+
   return (
     <View style={styles.container}>
       <Text
@@ -66,7 +75,7 @@ const FaceVerify = ({ navigation }) => {
         <Camera
           ref={cameraReff}
           style={{ flex: 1 }}
-          type={type}
+          type={CameraType.front}
           ratio={"1:1"}
           onFacesDetected={handleFacesDetected}
           faceDetectorSettings={{
