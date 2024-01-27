@@ -73,7 +73,7 @@ const Register = ({ navigation }) => {
         Create an Account
       </Text>
       <SwitchSelector
-        style={{ width: 230, margin: 10 }}
+        style={{ width: "90%", margin: 10 }}
         options={options}
         testID="options"
         initial={0}
@@ -120,7 +120,7 @@ const Register = ({ navigation }) => {
           <View
             style={{
               borderWidth: 1,
-              width: 230,
+              width: "90%",
               borderRadius: 10,
               alignItems: "left",
             }}
@@ -135,7 +135,7 @@ const Register = ({ navigation }) => {
           <View
             style={{
               borderWidth: 1,
-              width: 230,
+              width: "90%",
               borderRadius: 10,
               alignItems: "left",
             }}
@@ -150,7 +150,7 @@ const Register = ({ navigation }) => {
           <View
             style={{
               borderWidth: 1,
-              width: 230,
+              width: "90%",
               borderRadius: 10,
               alignItems: "left",
             }}
@@ -165,7 +165,7 @@ const Register = ({ navigation }) => {
           <View
             style={{
               borderWidth: 1,
-              width: 230,
+              width: "90%",
               borderRadius: 10,
               alignItems: "left",
             }}
@@ -183,7 +183,7 @@ const Register = ({ navigation }) => {
           <View
             style={{
               borderWidth: 1,
-              width: 230,
+              width: "90%",
               borderRadius: 10,
               alignItems: "left",
             }}
@@ -198,7 +198,7 @@ const Register = ({ navigation }) => {
           <View
             style={{
               borderWidth: 1,
-              width: 230,
+              width: "90%",
               borderRadius: 10,
             }}
           >
@@ -213,7 +213,7 @@ const Register = ({ navigation }) => {
           <View
             style={{
               borderWidth: 1,
-              width: 230,
+              width: "90%",
               borderRadius: 10,
             }}
           >
@@ -235,7 +235,7 @@ const Register = ({ navigation }) => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-around",
-              width: "87%",
+              width: "90%",
             }}
           >
             <View
@@ -254,6 +254,7 @@ const Register = ({ navigation }) => {
                   color: "red",
                   fontFamily: "Yantramanav_400Regular",
                   fontSize: 18,
+                  
                 }}
               >
                 {errorMessage}
@@ -264,20 +265,21 @@ const Register = ({ navigation }) => {
                   borderWidth: 1,
                   borderColor: "#06C09F",
                   borderRadius: 10,
-                  width: "100%",
                   alignSelf: "center",
                   display: "flex",
-                  flexDirection: "col",
-                  gap: 10,
-                  width: "100%",
-                  justifyContent: "center",
+                  flexDirection: "cal",
+                  gap: 10,               
+                  justifyContent:"center",
                   alignItems: "center",
+                  borderWidth: 1,
+                  borderRadius: 10,
                   width: 230,
+                  justify:"center"            
                 }}
                 onPress={navigateToNextScreen}
               >
                 <Text
-                  style={{ color: "white", padding: 10, textAlign: "center" }}
+                  style={{ color: "white", padding: 10,textAlign: "center",}}
                 >
                   Next
                 </Text>
