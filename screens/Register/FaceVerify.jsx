@@ -5,15 +5,16 @@ import * as FaceDetector from "expo-face-detector";
 import Icon from "react-native-vector-icons/Feather";
 import { globalStyles } from "../../globalStyles/globalStyles";
 
-const FaceVerify = () => {
+const FaceVerify = ({ navigation }) => {
   const [type, setType] = useState(CameraType.front);
   const [permission, setPermission] = useState(null);
   const [image, setImage] = useState(null);
   const cameraReff = useRef(null);
   const [message, setMessage] = useState({
-    text: "",
+    text: "Press the camera to take a selfie",
     code: false,
   });
+  const [faceDetected, setFaceDetected] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -23,11 +24,19 @@ const FaceVerify = () => {
   }, []);
 
   const handleFacesDetected = ({ faces }) => {
-    // console.log(faces);
+    if (faces.length > 0) {
+      setFaceDetected(true);
+    } else {
+      setFaceDetected(false);
+    }
   };
 
   //Camera logic. Will return the URI of the image taken
   const takeAPicture = async () => {
+    if (!faceDetected) {
+      setMessage({ text: "No face detected", code: false });
+      return;
+    }
     try {
       if (cameraReff) {
         const data = await cameraReff.current.takePictureAsync(null);
@@ -43,9 +52,9 @@ const FaceVerify = () => {
   const onPressNextStep = () => {
     //if the message.code is  === true, then we can navigate to the next step
     if (!message.code) {
-      console.log("Error taking picture");
+      setMessage({ text: "Please take a selfie", code: false });
     } else {
-      console.log("Proceed to next step");
+      navigation.navigate("FileUploadCapture");
     }
   };
 
@@ -81,8 +90,7 @@ const FaceVerify = () => {
         <Text style={{ textAlign: "center", padding: 10 }}>{message.text}</Text>
         <TouchableOpacity
           style={globalStyles.greenButton}
-          disabled={!message.code}
-          onPress={() => onPressNextStep}
+          onPress={onPressNextStep}
         >
           <Text style={globalStyles.greenButtonText}>Next Step</Text>
         </TouchableOpacity>
