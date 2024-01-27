@@ -22,7 +22,18 @@ const FileUploadCapture = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Upload Documents</Text>
+      <Text
+        style={{
+          fontSize: 20,
+          textAlign: "center",
+          marginVertical: 20,
+          fontFamily: "RobotoSlab_400Regular",
+        }}
+      >
+        Upload Documents
+      </Text>
+
+      {/* Create components cards where the user can upload documents */}
       <TouchableOpacity onPress={uploadDocumentOnPress}>
         <Text>Upload File</Text>
       </TouchableOpacity>

@@ -14,8 +14,6 @@ const FaceVerify = ({ navigation }) => {
   });
   const [faceDetected, setFaceDetected] = useState(false);
 
-  console.log(permission);
-
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
