@@ -30,7 +30,7 @@ const Register = ({ navigation }) => {
     ];
   };
   return (
-    <SafeAreaView style={{     display: "flex",
+    <SafeAreaView style={{display: "flex",
     flexDirection: "col",
     gap: 10,
     width: "100%",
@@ -48,6 +48,7 @@ const Register = ({ navigation }) => {
       </Text>
       <SwitchSelector
         style={{width:230
+          
        
         }}
         options={[
@@ -70,14 +71,14 @@ const Register = ({ navigation }) => {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          gap: 10,
+          gap: 20,
         }}
       >
         <View
           style={{
             display: "flex",
             flexDirection: "col",
-            gap: 10,
+            gap: 5,
             width: "100%",
             justifyContent: "center",
             alignItems: "center",
@@ -229,8 +230,7 @@ const Register = ({ navigation }) => {
           textAlign: "center",
           color: "red",
           fontFamily: "Yantramanav_400Regular",
-          fontSize:18,
-          
+          fontSize:18,        
         }}
       >
         Incorrect Password
@@ -249,10 +249,7 @@ const Register = ({ navigation }) => {
           width: "100%",
           justifyContent: "center",
           alignItems: "center",
-          width: 230,
-
-          
-          
+          width: 230,                   
         }}
         onPress={navigateToNextScreen}
       >
@@ -269,5 +266,4 @@ const Register = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
 export default Register;
