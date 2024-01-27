@@ -1,18 +1,8 @@
 import {
   View,
   Text,
-  onPress,
   TouchableOpacity,
-  Image,
-  setState,
   TextInput,
-  colors,
-  setRememberMe,
-  rememberMe,
-  navigateToRegister,
-  Button,
-  Toggle,
-  value,
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -24,11 +14,14 @@ const Register = ({ navigation }) => {
   const navigateToNextScreen = () => {
     //navigate to face verify screen
     navigation.navigate("FaceVerify");
-    const options = [
-      { label: "Amo",  },
-      { label: "Empleyado",}
-    ];
+
+
   };
+      
+  const options = [
+    { label: "Amo",  },
+    { label: "Empleyado",}
+  ];
   return (
     <SafeAreaView style={{display: "flex",
     flexDirection: "col",
@@ -43,18 +36,17 @@ const Register = ({ navigation }) => {
       <View
         
       ></View>
-      <Text style={{ fontFamily: "RobotoSlab_400Regular", fontSize: 18,textAlign:"center"}}>
+      <Text style={{ fontFamily: "RobotoSlab_400Regular", fontSize: 18,textAlign:"center",}}>
         Create an Account
       </Text>
       <SwitchSelector
-        style={{width:230
+        style={{width:230,
+          margin:10
           
        
         }}
-        options={[
-          { label: "Amo",  },
-          { label: "Empleyado",},
-        ]}
+        options={options}
+      
         testID="options"
         initial={0}
         buttonColor={"#437456"}
@@ -87,7 +79,7 @@ const Register = ({ navigation }) => {
           <View
             style={{
               borderWidth: 1,
-              width: 230,
+              width: "90%",
               borderRadius: 10,
               alignItems: "left",
             }}
