@@ -1,12 +1,6 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
-import React from "react";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import logo from "../../assets/logo.png";
 import SwitchSelector from "react-native-switch-selector";
 
 const Register = ({ navigation }) => {
@@ -14,48 +8,79 @@ const Register = ({ navigation }) => {
   const navigateToNextScreen = () => {
     //navigate to face verify screen
     navigation.navigate("FaceVerify");
-
-
   };
-      
-  const options = [
-    { label: "Amo",  },
-    { label: "Empleyado",}
-  ];
-  return (
-    <SafeAreaView style={{display: "flex",
-    flexDirection: "col",
-    gap: 10,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    
 
-  }}>
+  const [password, setPassword] = useState(""); //checker if the password and verify password is correct
+  const [verifyPassword, setVerifyPassword] = useState(""); //checker if the password and verify password is correct
+  const [errorMessage, setErrorMessage] = useState(""); //checker if the password and verify password is correct
+
+  const [newUserData, setNewUserData] = useState({
+    status: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    email: "",
+    phoneNumber: "",
+    dateOfBirth: "",
+    password: "",
+    verifyPassword: "",
+  });
+
+  const onChangeUserData = (key, value) => {
+    setNewUserData({ ...newUserData, [key]: value });
+    console.log(newUserData.password);
+    console.log(newUserData.verifyPassword);
+  };
+
+  //ES6 Arrow function
+  const passwordChecker = () => {
+    //checks the passwod if they are matched and return error message
+    if (newUserData.password !== newUserData.verifyPassword) {
+      return setErrorMessage("Password did not match");
+    } else {
+      //exercise:
+      //if verifyPassword is empty, return no error message
+      return setErrorMessage("");
+    }
+  };
+
+  useEffect(() => {
+    //Everytime the user types in the password, it will check if the password and verify password is matched
+    passwordChecker();
+  }, [newUserData]);
+
+  const options = [{ label: "Amo" }, { label: "Empleyado" }];
+  return (
+    <SafeAreaView
+      style={{
+        display: "flex",
+        flexDirection: "col",
+        gap: 10,
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       {/*create account*/}
-      <View
-        
-      ></View>
-      <Text style={{ fontFamily: "RobotoSlab_400Regular", fontSize: 18,textAlign:"center",}}>
+      <View></View>
+      <Text
+        style={{
+          fontFamily: "RobotoSlab_400Regular",
+          fontSize: 18,
+          textAlign: "center",
+        }}
+      >
         Create an Account
       </Text>
       <SwitchSelector
-        style={{width:230,
-          margin:10
-          
-       
-        }}
+        style={{ width: 230, margin: 10 }}
         options={options}
-      
         testID="options"
         initial={0}
         buttonColor={"#437456"}
         borderRadius={10}
         boarderColor={"#06C09F"}
         backgroundColor={"white"}
-        
-       
-
       />
       {/*togglebutton*/}
       <View
@@ -89,6 +114,7 @@ const Register = ({ navigation }) => {
               style={{ padding: 10 }}
               // always set text to smallcase
               autoCapitalize="none"
+              onChangeText={(event) => onChangeUserData("firstName", event)}
             />
           </View>
           <View
@@ -144,6 +170,7 @@ const Register = ({ navigation }) => {
               alignItems: "left",
             }}
           >
+            {/* Restrict to only take numeric */}
             <TextInput
               placeholder="11 Digit Phone Number"
               style={{ padding: 10 }}
@@ -180,6 +207,7 @@ const Register = ({ navigation }) => {
               secureTextEntry
               style={{ padding: 10 }}
               autoCapitalize="none"
+              onChangeText={(event) => onChangeUserData("password", event)}
             />
           </View>
           <View
@@ -194,6 +222,9 @@ const Register = ({ navigation }) => {
               secureTextEntry
               style={{ padding: 10 }}
               autoCapitalize="none"
+              onChangeText={(event) =>
+                onChangeUserData("verifyPassword", event)
+              }
             />
           </View>
         </View>
@@ -213,44 +244,44 @@ const Register = ({ navigation }) => {
                 flexDirection: "center",
                 justifyContent: "center",
                 alignItems: "center",
-                Text: "center",    
+                Text: "center",
               }}
             ></View>
             <View>
               <Text
-        style={{
-          textAlign: "center",
-          color: "red",
-          fontFamily: "Yantramanav_400Regular",
-          fontSize:18,        
-        }}
-      >
-        Incorrect Password
-      </Text>
-      <TouchableOpacity
-        style={{
-          backgroundColor: "#437456",
-          borderWidth: 1,
-          borderColor: "#06C09F",
-          borderRadius: 10,
-          width: "100%",
-          alignSelf: "center",
-          display: "flex",
-          flexDirection: "col",
-          gap: 10,
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-          width: 230,                   
-        }}
-        onPress={navigateToNextScreen}
-      >
-        <Text
-          style={{ color: "white", padding: 10, textAlign: "center"}}
-        >
-          Next
-        </Text>
-      </TouchableOpacity>
+                style={{
+                  textAlign: "center",
+                  color: "red",
+                  fontFamily: "Yantramanav_400Regular",
+                  fontSize: 18,
+                }}
+              >
+                {errorMessage}
+              </Text>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "#437456",
+                  borderWidth: 1,
+                  borderColor: "#06C09F",
+                  borderRadius: 10,
+                  width: "100%",
+                  alignSelf: "center",
+                  display: "flex",
+                  flexDirection: "col",
+                  gap: 10,
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: 230,
+                }}
+                onPress={navigateToNextScreen}
+              >
+                <Text
+                  style={{ color: "white", padding: 10, textAlign: "center" }}
+                >
+                  Next
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
