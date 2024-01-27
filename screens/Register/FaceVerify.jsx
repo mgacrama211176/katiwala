@@ -42,28 +42,30 @@ const FaceVerify = ({ navigation }) => {
         const data = await cameraReff.current.takePictureAsync(null);
         setImage(data.uri);
         setMessage({ text: "Image captured", code: true });
+
+        //proceed to next step
+        navigation.navigate("FileUploadCapture");
       }
     } catch (err) {
-      setMessage({ text: "Error taking picture", code: false });
-    }
-  };
-
-  //After Image capture is successful, we can navigate to the next step
-  const onPressNextStep = () => {
-    //if the message.code is  === true, then we can navigate to the next step
-    if (!message.code) {
       setMessage({ text: "Please take a selfie", code: false });
-    } else {
-      navigation.navigate("FileUploadCapture");
     }
   };
 
   return (
     <View style={styles.container}>
+      <Text
+        style={{
+          fontSize: 24,
+          fontFamily: "RobotoSlab_400Regular",
+          marginVertical: 40,
+        }}
+      >
+        Please line up your face
+      </Text>
       <View style={styles.cameraWrapper}>
         <Camera
           ref={cameraReff}
-          style={styles.camera}
+          style={{ flex: 1 }}
           type={type}
           ratio={"1:1"}
           onFacesDetected={handleFacesDetected}
@@ -74,27 +76,22 @@ const FaceVerify = ({ navigation }) => {
             minDetectionInterval: 50,
             tracking: true,
           }}
-        >
-          <TouchableOpacity
-            onPress={takeAPicture}
-            style={{
-              position: "absolute",
-              bottom: 0,
-              alignSelf: "center",
-              padding: 10,
-            }}
-          >
-            <Icon name="camera" size={50} color="white" />
-          </TouchableOpacity>
-        </Camera>
-        <Text style={{ textAlign: "center", padding: 10 }}>{message.text}</Text>
-        <TouchableOpacity
-          style={globalStyles.greenButton}
-          onPress={onPressNextStep}
-        >
-          <Text style={globalStyles.greenButtonText}>Next Step</Text>
-        </TouchableOpacity>
+        />
       </View>
+      <Text style={{ textAlign: "center", padding: 10 }}>{message.text}</Text>
+      <TouchableOpacity onPress={takeAPicture} style={styles.buttonContainer}>
+        <Icon name="camera" size={30} color="white" />
+        <Text
+          style={{
+            fontSize: 20,
+            fontFamily: "Yantramanav_400Regular",
+            color: "white",
+            fontWeight: "bold",
+          }}
+        >
+          Take a Photo
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -103,31 +100,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
     width: "100%",
     height: "100%",
+    alignItems: "center",
   },
   cameraWrapper: {
-    width: "100%",
-    height: "100%",
-    border: "1px solid black",
-    borderRadius: "100%",
-    padding: 10,
-  },
-  camera: {
-    width: "100%",
+    width: "95%",
     height: "50%",
     border: "1px solid black",
-    borderRadius: "100%",
+    padding: 0,
+    overflow: "hidden",
+    borderRadius: 500,
+  },
+  camera: {
+    width: "50%",
+    height: "50%",
+    border: "1px solid black",
     position: "relative",
     display: "flex",
   },
   buttonContainer: {
-    flex: 1,
-    backgroundColor: "transparent",
+    position: "relative",
+    bottom: 0,
+    alignSelf: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderColor: "#437456",
+    borderWidth: 1,
+    borderRadius: 10,
+    display: "flex",
     flexDirection: "row",
-    margin: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    backgroundColor: "#437456",
   },
 });
 
