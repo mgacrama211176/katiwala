@@ -4,6 +4,9 @@ import * as DocumentPicker from "expo-document-picker";
 //styles
 import styles from "./styles";
 
+//components
+import FileUploiadCardComponent from "../Global components/FileUploiadCardComponent";
+
 const FileUploadCapture = () => {
   const [uploadedData, setUploadedData] = useState("");
 
@@ -17,6 +20,22 @@ const FileUploadCapture = () => {
       type: type,
     });
   };
+
+  //Heading
+  const Requirements = [
+    {
+      title: " Biodata or Resume",
+    },
+    {
+      title: "Barangay Clearance",
+    },
+    {
+      title: "Police Clearance",
+    },
+    {
+      title: "Any Government ID",
+    },
+  ];
 
   console.log(uploadedData.assets);
 
@@ -32,6 +51,18 @@ const FileUploadCapture = () => {
       >
         Upload Documents
       </Text>
+      <Text>Upload Documents for validation</Text>
+
+      {/* Create components cards where the user can upload documents */}
+      {Requirements.map((item, index) => {
+        return <FileUploiadCardComponent data={item} key={index} />;
+      })}
+      <FileUploiadCardComponent data={Requirements} />
+
+      <View>
+        <Text>Skill Supporting Images</Text>
+        <Text>Upload atleast 1 supporting Image</Text>
+      </View>
 
       {/* Create components cards where the user can upload documents */}
       <TouchableOpacity onPress={uploadDocumentOnPress}>
