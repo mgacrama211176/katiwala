@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import * as DocumentPicker from "expo-document-picker";
+import uploadImage from "../../assets/uploadImage.png";
+
 //styles
 import styles from "./styles";
 
 //components
-import FileUploiadCardComponent from "../Global components/FileUploiadCardComponent";
+import FileUploadCardComponent from "../Global components/FileUploadCardComponent";
 
 const FileUploadCapture = () => {
   const [uploadedData, setUploadedData] = useState("");
@@ -24,7 +26,7 @@ const FileUploadCapture = () => {
   //Heading
   const Requirements = [
     {
-      title: " Biodata or Resume",
+      title: "Biodata or Resume",
     },
     {
       title: "Barangay Clearance",
@@ -37,38 +39,112 @@ const FileUploadCapture = () => {
     },
   ];
 
-  console.log(uploadedData.assets);
-
   return (
-    <View style={styles.container}>
-      <Text
-        style={{
-          fontSize: 20,
-          textAlign: "center",
-          marginVertical: 20,
-          fontFamily: "RobotoSlab_400Regular",
-        }}
-      >
-        Upload Documents
-      </Text>
-      <Text>Upload Documents for validation</Text>
-
-      {/* Create components cards where the user can upload documents */}
-      {Requirements.map((item, index) => {
-        return <FileUploiadCardComponent data={item} key={index} />;
-      })}
-      <FileUploiadCardComponent data={Requirements} />
-
+    <View
+      style={{
+        display: "flex",
+        paddingHorizontal: 20,
+        height: "100%",
+        justifyContent: "space-between",
+      }}
+    >
       <View>
-        <Text>Skill Supporting Images</Text>
-        <Text>Upload atleast 1 supporting Image</Text>
+        <Text
+          style={{
+            fontSize: 24,
+            textAlign: "center",
+            marginTop: 20,
+            marginBottom: 10,
+            fontFamily: "RobotoSlab_400Regular",
+          }}
+        >
+          Upload Documents
+        </Text>
+        <Text
+          style={{
+            fontSize: 20,
+            textAlign: "center",
+            fontFamily: "Yantramanav_700Bold",
+            marginBottom: 20,
+          }}
+        >
+          Upload Documents for validation
+        </Text>
+
+        {/* Create components cards where the user can upload documents */}
+        {Requirements.map((item, index) => {
+          return <FileUploadCardComponent data={item} key={index} />;
+        })}
+
+        <View
+          style={{ display: "flex", alignItems: "center", marginBottom: 10 }}
+        >
+          <Text
+            style={{
+              textAlign: "center",
+              fontFamily: "Yantramanav_700Bold",
+              fontSize: 20,
+              marginTop: 20,
+            }}
+          >
+            Skill Supporting Images
+          </Text>
+          <Text
+            style={{
+              textAlign: "center",
+              fontFamily: "Yantramanav_700Bold",
+              fontSize: 16,
+              color: "gray",
+            }}
+          >
+            Upload atleast 1 supporting Image
+          </Text>
+        </View>
+
+        {/* Create components cards where the user can upload documents */}
+        <TouchableOpacity
+          onPress={uploadDocumentOnPress}
+          style={{
+            backgroundColor: "#437456",
+            borderWidth: 2,
+            borderStyle: "dashed",
+            borderColor: "#437456",
+            borderRadius: 10,
+            padding: 20,
+            display: "flex",
+            alignItems: "center",
+            marginBottom: 20,
+            width: 200,
+            alignSelf: "center",
+          }}
+        >
+          <Image source={uploadImage} style={{ width: 100, height: 100 }} />
+        </TouchableOpacity>
       </View>
 
-      {/* Create components cards where the user can upload documents */}
-      <TouchableOpacity onPress={uploadDocumentOnPress}>
-        <Text>Upload File</Text>
+      <TouchableOpacity
+        style={{
+          backgroundColor: "#437456",
+          borderWidth: 1,
+          borderColor: "transparent",
+          borderRadius: 10,
+          alignSelf: "center",
+          width: "80%",
+          marginBottom: 40,
+        }}
+      >
+        <Text
+          style={{
+            color: "white",
+            padding: 10,
+            textAlign: "center",
+            fontFamily: "Yantramanav_700Bold",
+            fontSize: 24,
+          }}
+        >
+          Next
+        </Text>
       </TouchableOpacity>
-      <Text>{uploadedData.name} has been added</Text>
     </View>
   );
 };
