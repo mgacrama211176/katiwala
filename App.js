@@ -8,6 +8,7 @@ import Login from "./screens/Login";
 import Register from "./screens/Register";
 import FaceVerify from "./screens/Register/FaceVerify";
 import FileUploadCapture from "./screens/Register/FileUploadCapture";
+import RateGenerator from "./screens/Register/RateGenerator";
 
 //Navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -67,6 +68,13 @@ export default function App() {
           <Stack.Screen
             name="FileUploadCapture"
             component={FileUploadCapture}
+          />
+          <Stack.Screen
+            name="RateGenerator"
+            component={RateGenerator}
+            options={{
+              headerShown: false,
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
