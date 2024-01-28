@@ -1,10 +1,7 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import { Text, View, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import * as DocumentPicker from "expo-document-picker";
 import uploadImage from "../../assets/uploadImage.png";
-
-//styles
-import styles from "./styles";
 
 //components
 import FileUploadCardComponent from "../Global components/FileUploadCardComponent";
@@ -97,7 +94,7 @@ const FileUploadCapture = () => {
               color: "gray",
             }}
           >
-            Upload atleast 1 supporting Image
+            (Upload atleast 1 supporting Image for faster approval)
           </Text>
         </View>
 
