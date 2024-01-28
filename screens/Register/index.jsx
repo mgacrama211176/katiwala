@@ -49,7 +49,7 @@ const Register = ({ navigation }) => {
     passwordChecker();
   }, [newUserData]);
 
-  const options = [{ label: "Amo" }, { label: "Empleyado" }];
+  
   return (
     <SafeAreaView
       style={{
@@ -67,22 +67,10 @@ const Register = ({ navigation }) => {
         style={{
           fontFamily: "RobotoSlab_400Regular",
           fontSize: 18,
-          textAlign: "center",
         }}
       >
         Create an Account
       </Text>
-      <SwitchSelector
-        style={{ width: "90%", margin: 10 }}
-        options={options}
-        testID="options"
-        initial={0}
-        buttonColor={"#437456"}
-        borderRadius={10}
-        boarderColor={"#06C09F"}
-        backgroundColor={"white"}
-      />
-      {/*togglebutton*/}
       <View
         style={{
           width: "100%",
@@ -291,4 +279,4 @@ const Register = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-export default Register;
+export default Register
