@@ -12,6 +12,7 @@
     "@expo-google-fonts/quattrocento-sans": "^0.2.3",
     "@expo-google-fonts/roboto-slab": "^0.2.3",
     "@expo-google-fonts/yantramanav": "^0.2.3",
+    "@react-native-community/datetimepicker": "7.2.0",
     "@react-native-masked-view/masked-view": "0.2.9",
     "@react-navigation/native": "^6.1.8",
     "@react-navigation/stack": "^6.3.18",

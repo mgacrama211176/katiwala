@@ -5,11 +5,11 @@ import {
   TextInput,
   Pressable,
   Platform,
+  Button,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import SwitchSelector from "react-native-switch-selector";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 
 const Register = ({ navigation }) => {
   //Navigate to next screen
@@ -72,6 +72,24 @@ const Register = ({ navigation }) => {
     //Everytime the user types in the password, it will check if the password and verify password is matched
     passwordChecker();
   }, [newUserData]);
+
+  const onChangeDate = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    DateTimePickerAndroid.open({
+      value: date,
+      onChangeDate,
+      mode: currentMode,
+      is24Hour: true,
+    });
+  };
+
+  const showDatepicker = () => {
+    showMode("date");
+  };
 
   const options = [{ label: "Amo" }, { label: "Empleyado" }];
   return (
@@ -181,7 +199,7 @@ const Register = ({ navigation }) => {
               borderWidth: 1,
               width: "90%",
               borderRadius: 10,
-              alignItems: "left",
+              // alignItems: "left",
             }}
           >
             {/* Restrict to only take numeric */}
@@ -199,34 +217,11 @@ const Register = ({ navigation }) => {
               borderWidth: 1,
               width: "90%",
               borderRadius: 10,
-              alignItems: "left",
+              // alignItems: "left",
               padding: 9,
             }}
           >
-            <Pressable onPress={toggleDatepicker}>
-              <TextInput
-                style={{
-                  boarderWidth: 1,
-                  width: "90",
-                  borderRadius: 10,
-                  allignItem: "left",
-                }}
-                placeholder="sat Aug 21 2004"
-                value="Date of Birth"
-                editable={false}
-                mode="date"
-              />
-            </Pressable>
-            {showPicker && (
-              <DateTimePicker
-                mode="date"
-                display="spinner"
-                value={date}
-                onChange={onChange}
-                onPress={toggleDatepicker}
-                editable={false}
-              />
-            )}
+            <Button onPress={showDatepicker} title="Show date picker!" />
           </View>
           <View
             style={{
