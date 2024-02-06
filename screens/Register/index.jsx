@@ -1,7 +1,15 @@
-import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Pressable,
+  Platform,
+} from "react-native";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SwitchSelector from "react-native-switch-selector";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 const Register = ({ navigation }) => {
   //Navigate to next screen
@@ -9,11 +17,27 @@ const Register = ({ navigation }) => {
     //navigate to face verify screen
     navigation.navigate("FaceVerify");
   };
+  const [date, setDate] = useState(new Date());
+  const [showPicker, setShowPicker] = useState(false); //datepicker
+  const toggleDatepicker = () => {
+    setShowPicker(!showPicker);
+  };
+  const onChange = ({ type }, selectedDate) => {
+    if (type == "set") {
+      const currentDate = selectedDate;
+      setDate(currentDate);
 
+      if (Platform.OS === "android") {
+        toggleDatepicker();
+        setDateOfBirth(currentDate.toDateString());
+      }
+    } else {
+      toggleDatepicker();
+    }
+  };
   const [password, setPassword] = useState(""); //checker if the password and verify password is correct
   const [verifyPassword, setVerifyPassword] = useState(""); //checker if the password and verify password is correct
   const [errorMessage, setErrorMessage] = useState(""); //checker if the password and verify password is correct
-
   const [newUserData, setNewUserData] = useState({
     status: "",
     firstName: "",
@@ -49,7 +73,7 @@ const Register = ({ navigation }) => {
     passwordChecker();
   }, [newUserData]);
 
-  
+  const options = [{ label: "Amo" }, { label: "Empleyado" }];
   return (
     <SafeAreaView
       style={{
@@ -62,11 +86,13 @@ const Register = ({ navigation }) => {
       }}
     >
       {/*create account*/}
-      <View></View>
+
       <Text
         style={{
           fontFamily: "RobotoSlab_400Regular",
           fontSize: 18,
+          textAlign: "center",
+          margin: 20,
         }}
       >
         Create an Account
@@ -174,14 +200,33 @@ const Register = ({ navigation }) => {
               width: "90%",
               borderRadius: 10,
               alignItems: "left",
+              padding: 9,
             }}
           >
-            <TextInput
-              placeholder="Date of Birth"
-              style={{ padding: 10 }}
-              // always set Date type
-              autoCapitalize="none"
-            />
+            <Pressable onPress={toggleDatepicker}>
+              <TextInput
+                style={{
+                  boarderWidth: 1,
+                  width: "90",
+                  borderRadius: 10,
+                  allignItem: "left",
+                }}
+                placeholder="sat Aug 21 2004"
+                value="Date of Birth"
+                editable={false}
+                mode="date"
+              />
+            </Pressable>
+            {showPicker && (
+              <DateTimePicker
+                mode="date"
+                display="spinner"
+                value={date}
+                onChange={onChange}
+                onPress={toggleDatepicker}
+                editable={false}
+              />
+            )}
           </View>
           <View
             style={{
@@ -195,7 +240,6 @@ const Register = ({ navigation }) => {
               secureTextEntry
               style={{ padding: 10 }}
               autoCapitalize="none"
-              onChangeText={(event) => onChangeUserData("password", event)}
             />
           </View>
           <View
@@ -242,7 +286,6 @@ const Register = ({ navigation }) => {
                   color: "red",
                   fontFamily: "Yantramanav_400Regular",
                   fontSize: 18,
-                  
                 }}
               >
                 {errorMessage}
@@ -256,18 +299,18 @@ const Register = ({ navigation }) => {
                   alignSelf: "center",
                   display: "flex",
                   flexDirection: "cal",
-                  gap: 10,               
-                  justifyContent:"center",
+                  gap: 10,
+                  justifyContent: "center",
                   alignItems: "center",
                   borderWidth: 1,
                   borderRadius: 10,
                   width: 230,
-                  justify:"center"            
+                  justify: "center",
                 }}
                 onPress={navigateToNextScreen}
               >
                 <Text
-                  style={{ color: "white", padding: 10,textAlign: "center",}}
+                  style={{ color: "white", padding: 10, textAlign: "center" }}
                 >
                   Next
                 </Text>
@@ -279,4 +322,5 @@ const Register = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-export default Register
+
+export default Register;
