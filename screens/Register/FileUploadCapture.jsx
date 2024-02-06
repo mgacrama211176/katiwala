@@ -6,7 +6,7 @@ import uploadImage from "../../assets/uploadImage.png";
 //components
 import FileUploadCardComponent from "../Global components/FileUploadCardComponent";
 
-const FileUploadCapture = () => {
+const FileUploadCapture = ({ navigation }) => {
   const [uploadedData, setUploadedData] = useState("");
 
   const uploadDocumentOnPress = async () => {
@@ -138,6 +138,7 @@ const FileUploadCapture = () => {
             fontFamily: "Yantramanav_700Bold",
             fontSize: 24,
           }}
+          onPress={() => navigation.navigate("RateGenerator")}
         >
           Next
         </Text>
