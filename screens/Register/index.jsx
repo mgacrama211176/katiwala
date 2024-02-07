@@ -9,7 +9,8 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+//import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 const Register = ({ navigation }) => {
   //Navigate to next screen
@@ -17,6 +18,9 @@ const Register = ({ navigation }) => {
     //navigate to face verify screen
     navigation.navigate("FaceVerify");
   };
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [formReady, setFormReady] = useState(false);
+
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false); //datepicker
   const toggleDatepicker = () => {
@@ -221,7 +225,26 @@ const Register = ({ navigation }) => {
               padding: 9,
             }}
           >
-            <Button onPress={showDatepicker} title="Show date picker!" />
+            {!showPicker && (
+              <Pressable onPress={toggleDatepicker}>
+                <TextInput
+                  style={{ padding: 1 }}
+                  placeholder="Date of Birth"
+                  onChangeText={setDateOfBirth}
+                  editable={false}
+                  value={dateOfBirth}
+                />
+              </Pressable>
+            )}
+
+            {showPicker && (
+              <DateTimePicker
+                mode="date"
+                display="spinner"
+                value={date}
+                onChange={onChange}
+              />
+            )}
           </View>
           <View
             style={{
