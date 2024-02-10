@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import React from "react";
 import EstimateCard from "../Global components/EstimateCard";
 
@@ -6,32 +6,74 @@ const RateGenerator = () => {
   return (
     <SafeAreaView
       style={{
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
+        flex: 1,
+        justifyContent: "space-between",
         alignItems: "center",
-        marginTop: 60,
-        marginBottom: 10,
+        paddingVertical: 20,
+        marginTop: 30,
+        width: "100%",
       }}
     >
-      <Text style={{ fontSize: 24, fontFamily: "RobotoSlab_400Regular" }}>
-        Estimated Rates
-      </Text>
-      <Text
+      <View
         style={{
-          color: "red",
-          fontWeight: "bold",
-          fontSize: 16,
-          width: "80%",
-          textAlign: "center",
+          flex: 1,
+          alignItems: "center",
+          gap: 10,
+          width: "90%",
         }}
       >
-        Please be reminded that there will be a 10% service charge per service
-        made.
-      </Text>
+        <Text
+          style={{
+            fontSize: 24,
+            fontFamily: "RobotoSlab_400Regular",
+          }}
+        >
+          Estimated Rates
+        </Text>
+        <Text
+          style={{
+            color: "red",
+            fontWeight: "bold",
+            fontSize: 16,
 
-      {/* Cards will be inserted here which will depend on the service selected prior */}
-      <EstimateCard />
+            textAlign: "center",
+          }}
+        >
+          Please be reminded that there will be a 10% service charge per service
+          made.
+        </Text>
+
+        {/* Cards will be inserted here which will depend on the service selected prior */}
+        <EstimateCard />
+      </View>
+      <View>
+        <TouchableOpacity
+          style={{
+            backgroundColor: "#437456",
+            borderWidth: 1,
+            borderColor: "transparent",
+            borderRadius: 10,
+            alignSelf: "center",
+            width: "80%",
+            marginBottom: 40,
+          }}
+        >
+          <Text
+            style={{
+              color: "white",
+              padding: 10,
+              textAlign: "center",
+              fontFamily: "Yantramanav_700Bold",
+              fontSize: 24,
+              width: 300,
+            }}
+            // onPress={() => navigation.navigate("RateGenerator")}
+          >
+            Next
+          </Text>
+        </TouchableOpacity>
+        <Text>No ROUTE YET FOR PRIVACY POLICY</Text>
+      </View>
     </SafeAreaView>
   );
 };

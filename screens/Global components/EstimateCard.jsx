@@ -30,16 +30,18 @@ const EstimateCard = () => {
   return (
     <View
       style={{
-        width: "80%",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
         marginTop: 40,
         borderWidth: 1,
         borderRadius: 10,
         padding: 10,
         backgroundColor: "#437456",
         borderColor: "transparent",
+        alignItems: "center",
+        paddingTop: 5,
+        paddingBottom: 20,
       }}
     >
       <View style={{ width: "70%" }}>
@@ -68,6 +70,7 @@ const EstimateCard = () => {
           }}
           onChangeText={(event) => onChangeRate(event)}
           keyboardType="numeric" // Only accept numbers
+          defaultValue={rate.toString()}
         />
         <Text
           style={{ color: "white", textAlign: "center", paddingVertical: 10 }}
