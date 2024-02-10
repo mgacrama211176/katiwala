@@ -5,24 +5,34 @@ import {
   TextInput,
   Pressable,
   Platform,
-  Button,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-//import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 const Register = ({ navigation }) => {
+  const [date, setDate] = useState(new Date());
+  const [showPicker, setShowPicker] = useState(false); //datepicker
+  const [errorMessage, setErrorMessage] = useState(""); //checker if the password and verify password is correct
+  const [dateOfBirth, setDateOfBirth] = useState(""); //still needs to be factored in since on newUserData contains the value of DOB
+  const [newUserData, setNewUserData] = useState({
+    status: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    email: "",
+    phoneNumber: "",
+    dateOfBirth: "",
+    password: "",
+    verifyPassword: "",
+  });
+
   //Navigate to next screen
   const navigateToNextScreen = () => {
     //navigate to face verify screen
     navigation.navigate("FaceVerify");
   };
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [formReady, setFormReady] = useState(false);
 
-  const [date, setDate] = useState(new Date());
-  const [showPicker, setShowPicker] = useState(false); //datepicker
   const toggleDatepicker = () => {
     setShowPicker(!showPicker);
   };
@@ -39,25 +49,9 @@ const Register = ({ navigation }) => {
       toggleDatepicker();
     }
   };
-  const [password, setPassword] = useState(""); //checker if the password and verify password is correct
-  const [verifyPassword, setVerifyPassword] = useState(""); //checker if the password and verify password is correct
-  const [errorMessage, setErrorMessage] = useState(""); //checker if the password and verify password is correct
-  const [newUserData, setNewUserData] = useState({
-    status: "",
-    firstName: "",
-    lastName: "",
-    address: "",
-    email: "",
-    phoneNumber: "",
-    dateOfBirth: "",
-    password: "",
-    verifyPassword: "",
-  });
 
   const onChangeUserData = (key, value) => {
     setNewUserData({ ...newUserData, [key]: value });
-    console.log(newUserData.password);
-    console.log(newUserData.verifyPassword);
   };
 
   //ES6 Arrow function
@@ -77,25 +71,6 @@ const Register = ({ navigation }) => {
     passwordChecker();
   }, [newUserData]);
 
-  const onChangeDate = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setDate(currentDate);
-  };
-
-  const showMode = (currentMode) => {
-    DateTimePickerAndroid.open({
-      value: date,
-      onChangeDate,
-      mode: currentMode,
-      is24Hour: true,
-    });
-  };
-
-  const showDatepicker = () => {
-    showMode("date");
-  };
-
-  const options = [{ label: "Amo" }, { label: "Empleyado" }];
   return (
     <SafeAreaView
       style={{
@@ -203,7 +178,6 @@ const Register = ({ navigation }) => {
               borderWidth: 1,
               width: "90%",
               borderRadius: 10,
-              // alignItems: "left",
             }}
           >
             {/* Restrict to only take numeric */}
