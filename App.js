@@ -1,4 +1,4 @@
-import { Text } from "react-native";
+import { Text, StatusBar } from "react-native";
 import { RecoilRoot } from "recoil";
 import "react-native-gesture-handler";
 
@@ -28,6 +28,12 @@ import {
   Yantramanav_400Regular,
   Yantramanav_700Bold,
 } from "@expo-google-fonts/yantramanav";
+
+/*
+Since the app's theme is light, we can set the status bar to dark-content for now,
+If you want to add a dark mode later, you can use the useColorScheme hook to determine the theme and set the status bar accordingly.
+*/
+StatusBar.setBarStyle("dark-content", true);
 
 const Stack = createStackNavigator();
 

@@ -1,33 +1,30 @@
-import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from "react-native";
 import React from "react";
 import EstimateCard from "../Global components/EstimateCard";
 
 const RateGenerator = () => {
+  const handleDismissKeyboard = () => {
+    Keyboard.dismiss();
+  };
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        justifyContent: "space-between",
-        alignItems: "center",
-        paddingVertical: 20,
-        marginTop: 30,
-        width: "100%",
-      }}
-    >
-      <View
+    <TouchableWithoutFeedback onPress={handleDismissKeyboard}>
+      <SafeAreaView
         style={{
-          flex: 1,
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
           alignItems: "center",
-          gap: 10,
-          width: "90%",
+          marginTop: 60,
+          marginBottom: 10,
         }}
       >
-        <Text
-          style={{
-            fontSize: 24,
-            fontFamily: "RobotoSlab_400Regular",
-          }}
-        >
+        <Text style={{ fontSize: 24, fontFamily: "RobotoSlab_400Regular" }}>
           Estimated Rates
         </Text>
         <Text
@@ -35,7 +32,7 @@ const RateGenerator = () => {
             color: "red",
             fontWeight: "bold",
             fontSize: 16,
-
+            width: "80%",
             textAlign: "center",
           }}
         >
@@ -45,36 +42,8 @@ const RateGenerator = () => {
 
         {/* Cards will be inserted here which will depend on the service selected prior */}
         <EstimateCard />
-      </View>
-      <View>
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#437456",
-            borderWidth: 1,
-            borderColor: "transparent",
-            borderRadius: 10,
-            alignSelf: "center",
-            width: "80%",
-            marginBottom: 40,
-          }}
-        >
-          <Text
-            style={{
-              color: "white",
-              padding: 10,
-              textAlign: "center",
-              fontFamily: "Yantramanav_700Bold",
-              fontSize: 24,
-              width: 300,
-            }}
-            // onPress={() => navigation.navigate("RateGenerator")}
-          >
-            Next
-          </Text>
-        </TouchableOpacity>
-        <Text>No ROUTE YET FOR PRIVACY POLICY</Text>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 };
 
