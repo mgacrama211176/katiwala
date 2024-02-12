@@ -25,14 +25,14 @@ const styles = StyleSheet.create({
   loginFormWrapper: {
     display: "flex",
     flexDirection: "col",
-    gap: 10,
+    gap: 20,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
   inputStyle: {
     borderWidth: 1,
-    width: 230,
+    width: 400,
     borderRadius: 10,
   },
 
@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
   checkBoxContainer: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "start",
+    marginLeft: 30,
     alignItems: "center",
   },
   loginButton: {
