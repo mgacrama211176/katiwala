@@ -130,7 +130,7 @@ const Login = ({ navigation }) => {
         </View>
         {/* Register */}
       </View>
-      <View style={{ display: "flex", alignItems: "center", marginTop: 50 }}>
+      <View style={{ display: "flex", alignItems: "center" }}>
         <Text
           style={{ fontSize: 16, fontFamily: "QuattrocentoSans_400Regular" }}
         >

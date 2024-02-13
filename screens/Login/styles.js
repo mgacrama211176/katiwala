@@ -5,11 +5,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
+    justifyContent: "space-evenly",
   },
   imageContainer: {
     width: 300,
     height: "30%",
-    marginTop: 50,
   },
   imageStyle: {
     width: "100%",
