@@ -139,6 +139,7 @@ const Login = ({ navigation }) => {
             Don't have an account?
           </Text>
           <Text
+            onPress={navigateToRegister}
             style={{
               fontFamily: "QuattrocentoSans_400Regular",
               color: "#437456",
