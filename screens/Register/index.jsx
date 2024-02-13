@@ -196,7 +196,8 @@ const Register = ({ navigation }) => {
               width: "90%",
               borderRadius: 10,
               // alignItems: "left",
-              padding: 9,
+              padding: 10,
+              height: "11%",
             }}
           >
             {!showPicker && (
