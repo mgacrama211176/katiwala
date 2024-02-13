@@ -1,4 +1,10 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { Camera, CameraType } from "expo-camera";
 import * as FaceDetector from "expo-face-detector";
@@ -59,7 +65,7 @@ const FaceVerify = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text
         style={{
           fontSize: 24,
@@ -99,12 +105,13 @@ const FaceVerify = ({ navigation }) => {
           Take a Photo
         </Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 50,
     flex: 1,
     backgroundColor: "white",
     width: "100%",
@@ -112,16 +119,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cameraWrapper: {
-    width: "95%",
-    height: "50%",
+    width: 400,
+    height: 400,
     border: "1px solid black",
     padding: 0,
     overflow: "hidden",
     borderRadius: 500,
   },
   camera: {
-    width: "50%",
-    height: "50%",
+    width: "100%",
+    height: "100%",
     border: "1px solid black",
     position: "relative",
     display: "flex",

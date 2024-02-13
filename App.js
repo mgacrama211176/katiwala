@@ -29,15 +29,8 @@ import {
   Yantramanav_700Bold,
 } from "@expo-google-fonts/yantramanav";
 
-/*
-Since the app's theme is light, we can set the status bar to dark-content for now,
-If you want to add a dark mode later, you can use the useColorScheme hook to determine the theme and set the status bar accordingly.
-*/
-StatusBar.setBarStyle("dark-content", true);
-
-const Stack = createStackNavigator();
-
-export default function App() {
+//Load Fonts function
+export const LoadFonts = () => {
   const [fontsLoaded] = useFonts({
     QuattrocentoSans_400Regular,
     QuattrocentoSans_700Bold,
@@ -50,39 +43,75 @@ export default function App() {
   if (!fontsLoaded) {
     return <Text>Loading....</Text>;
   }
+  return null;
+};
+
+/*
+Since the app's theme is light, we can set the status bar to dark-content for now,
+If you want to add a dark mode later, you can use the useColorScheme hook to determine the theme and set the status bar accordingly.
+*/ export const StatusBarStyle = () => {
+  StatusBar.setBarStyle("dark-content", true);
+};
+
+//Navigation function
+export const AppStack = () => {
+  const Stack = createStackNavigator();
+
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FaceVerify"
+        component={FaceVerify}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="FileUploadCapture"
+        component={FileUploadCapture}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="RateGenerator"
+        component={RateGenerator}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+export default function App() {
   return (
     <RecoilRoot>
+      <LoadFonts />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{
-              headerShown: false,
-            }}
-          />
-
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="FaceVerify" component={FaceVerify} />
-          <Stack.Screen
-            name="FileUploadCapture"
-            component={FileUploadCapture}
-          />
-          <Stack.Screen
-            name="RateGenerator"
-            component={RateGenerator}
-            options={{
-              headerShown: false,
-            }}
-          />
-        </Stack.Navigator>
+        <AppStack />
       </NavigationContainer>
     </RecoilRoot>
   );
