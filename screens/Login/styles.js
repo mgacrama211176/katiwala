@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: 300,
-    height: 300,
-    marginTop: 100,
+    height: "30%",
+    marginTop: 50,
   },
   imageStyle: {
     width: "100%",
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   loginFormContainer: {
     width: "100%",
     display: "flex",
-    justifyContent: "center",
     gap: 10,
   },
   loginFormWrapper: {
