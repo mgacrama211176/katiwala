@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     borderWidth: 1,
-    width: 400,
+    width: "80%",
     borderRadius: 10,
   },
 
