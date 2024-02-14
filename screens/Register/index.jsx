@@ -76,10 +76,12 @@ const Register = ({ navigation }) => {
       style={{
         display: "flex",
         flexDirection: "col",
-        gap: 10,
+        gap: 0,
         width: "100%",
-        justifyContent: "center",
         alignItems: "center",
+        padding: 0,
+        margin: 0,
+        justifyContent: "center",   
       }}
     >
       {/*create account*/}
@@ -87,9 +89,12 @@ const Register = ({ navigation }) => {
       <Text
         style={{
           fontFamily: "RobotoSlab_400Regular",
-          fontSize: 18,
-          textAlign: "center",
-          margin: 20,
+          fontSize: 25,
+          textAlign: "center",   
+          position:"center",
+          padding:10,
+          margin:10,     
+          justifyContent: "space-around",  
         }}
       >
         Create an Account
@@ -99,7 +104,8 @@ const Register = ({ navigation }) => {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          gap: 20,
+          gap: 50,
+          padding:10,
         }}
       >
         <View
@@ -110,6 +116,8 @@ const Register = ({ navigation }) => {
             width: "100%",
             justifyContent: "center",
             alignItems: "center",
+            padding: 10,
+
           }}
         >
           <View
@@ -118,6 +126,7 @@ const Register = ({ navigation }) => {
               width: "90%",
               borderRadius: 10,
               alignItems: "left",
+              
             }}
           >
             <TextInput
@@ -196,7 +205,8 @@ const Register = ({ navigation }) => {
               width: "90%",
               borderRadius: 10,
               // alignItems: "left",
-              padding: 9,
+              padding: 10,
+              height: "11%",
             }}
           >
             {!showPicker && (
