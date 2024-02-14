@@ -1,4 +1,10 @@
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  SafeAreaView,
+} from "react-native";
 import React, { useState } from "react";
 import * as DocumentPicker from "expo-document-picker";
 import uploadImage from "../../assets/uploadImage.png";
@@ -8,6 +14,33 @@ import FileUploadCardComponent from "../Global components/FileUploadCardComponen
 
 const FileUploadCapture = ({ navigation }) => {
   const [uploadedData, setUploadedData] = useState("");
+
+  const [documents, setDocuments] = useState([
+    {
+      title: "Biodata or Resume",
+      uri: "",
+      name: "",
+      mimeType: "",
+    },
+    {
+      title: "Barangay Clearance",
+      uri: "",
+      name: "",
+      mimeType: "",
+    },
+    {
+      title: "Police Clearance",
+      uri: "",
+      name: "",
+      mimeType: "",
+    },
+    {
+      title: "Any Government ID",
+      uri: "",
+      name: "",
+      mimeType: "",
+    },
+  ]);
 
   const uploadDocumentOnPress = async () => {
     let documentResult = await DocumentPicker.getDocumentAsync({});
@@ -20,29 +53,13 @@ const FileUploadCapture = ({ navigation }) => {
     });
   };
 
-  //Heading
-  const Requirements = [
-    {
-      title: "Biodata or Resume",
-    },
-    {
-      title: "Barangay Clearance",
-    },
-    {
-      title: "Police Clearance",
-    },
-    {
-      title: "Any Government ID",
-    },
-  ];
-
   return (
-    <View
+    <SafeAreaView
       style={{
+        flex: 1,
         display: "flex",
-        paddingHorizontal: 20,
         height: "100%",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
       }}
     >
       <View>
@@ -69,9 +86,11 @@ const FileUploadCapture = ({ navigation }) => {
         </Text>
 
         {/* Create components cards where the user can upload documents */}
-        {Requirements.map((item, index) => {
-          return <FileUploadCardComponent data={item} key={index} />;
-        })}
+        {documents.map((item, index) => (
+          <View key={index}>
+            <FileUploadCardComponent data={item} setDocuments={setDocuments} />
+          </View>
+        ))}
 
         <View
           style={{ display: "flex", alignItems: "center", marginBottom: 10 }}
@@ -143,7 +162,7 @@ const FileUploadCapture = ({ navigation }) => {
           Next
         </Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

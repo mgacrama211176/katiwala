@@ -66,32 +66,44 @@ const FaceVerify = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text
-        style={{
-          fontSize: 24,
-          fontFamily: "RobotoSlab_400Regular",
-          marginVertical: 40,
-        }}
-      >
-        Please line up your face
-      </Text>
-      <View style={styles.cameraWrapper}>
-        <Camera
-          ref={cameraReff}
-          style={{ flex: 1 }}
-          type={CameraType.front}
-          ratio={"1:1"}
-          onFacesDetected={handleFacesDetected}
-          faceDetectorSettings={{
-            mode: FaceDetector.FaceDetectorMode.fast,
-            detectLandmarks: FaceDetector.FaceDetectorLandmarks.none,
-            runClassifications: FaceDetector.FaceDetectorClassifications.none,
-            minDetectionInterval: 50,
-            tracking: true,
+      <View style={{ alignItems: "center" }}>
+        <Text
+          style={{
+            fontSize: 28,
+            fontFamily: "RobotoSlab_400Regular",
+            textAlign: "center",
+            padding: 10,
           }}
-        />
+        >
+          Please line up your face
+        </Text>
+        <View style={styles.cameraWrapper}>
+          <Camera
+            ref={cameraReff}
+            style={{ flex: 1 }}
+            type={CameraType.front}
+            ratio={"1:1"}
+            onFacesDetected={handleFacesDetected}
+            faceDetectorSettings={{
+              mode: FaceDetector.FaceDetectorMode.fast,
+              detectLandmarks: FaceDetector.FaceDetectorLandmarks.none,
+              runClassifications: FaceDetector.FaceDetectorClassifications.none,
+              minDetectionInterval: 50,
+              tracking: true,
+            }}
+          />
+        </View>
+        <Text
+          style={{
+            textAlign: "center",
+            padding: 10,
+            fontSize: 22,
+            fontFamily: "Yantramanav_400Regular",
+          }}
+        >
+          {message.text}
+        </Text>
       </View>
-      <Text style={{ textAlign: "center", padding: 10 }}>{message.text}</Text>
       <TouchableOpacity onPress={takeAPicture} style={styles.buttonContainer}>
         <Icon name="camera" size={30} color="white" />
         <Text
@@ -111,12 +123,12 @@ const FaceVerify = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50,
     flex: 1,
     backgroundColor: "white",
     width: "100%",
     height: "100%",
     alignItems: "center",
+    justifyContent: "space-around",
   },
   cameraWrapper: {
     width: 400,

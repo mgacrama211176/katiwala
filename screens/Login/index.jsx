@@ -10,7 +10,6 @@ import { useState } from "react";
 import logo from "../../assets/logo.png";
 import styles from "./styles";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { globalStyles } from "../../globalStyles/globalStyles";
 import { Entypo } from "@expo/vector-icons";
 
 //GlobalComponents
@@ -20,6 +19,7 @@ const Login = ({ navigation }) => {
   const [rememberMe, setRememberMe] = useState(false);
   const [password, setPassword] = useState(""); // Set a state for the password
   const [showPassword, setShowPassword] = useState(false); // This state will be used to toggle the password visibility as a flag / boolean
+  const [message, setMessage] = useState("");
 
   const navigateToRegister = () => {
     //navigate to register screen
@@ -93,7 +93,7 @@ const Login = ({ navigation }) => {
             fontSize: 16,
           }}
         >
-          Incorrect Password
+          {message}
         </Text>
 
         <View style={styles.checkBoxContainer}>

@@ -4,21 +4,28 @@ import * as DocumentPicker from "expo-document-picker";
 import checked from "../../assets/checked.png";
 import unchecked from "../../assets/unchecked.png";
 
-const FileUploadCardComponent = (data) => {
-  const [uploadedData, setUploadedData] = useState("");
-
-  const information = data.data;
-
+const FileUploadCardComponent = ({ data, setDocuments }) => {
   const uploadDocumentOnPress = async () => {
     let documentResult = await DocumentPicker.getDocumentAsync({});
-    const { uri, name, type } = documentResult.assets[0];
 
-    setUploadedData({
-      uri: uri,
-      name: name,
-      type: type,
+    const { uri, name, mimeType } = documentResult.assets[0];
+
+    setDocuments((prev) => {
+      return prev.map((doc) => {
+        if (doc.title === data.title) {
+          return {
+            ...doc,
+            uri: uri,
+            name: name,
+            mimeType: mimeType,
+          };
+        }
+        return doc;
+      });
     });
   };
+
+  console.log(data);
 
   return (
     <View>
@@ -39,7 +46,12 @@ const FileUploadCardComponent = (data) => {
           gap: 10,
         }}
       >
-        <Image source={checked} style={{ width: 20, height: 20 }} />
+        {data.uri === "" ? (
+          <Image source={unchecked} style={{ width: 20, height: 20 }} />
+        ) : (
+          <Image source={checked} style={{ width: 20, height: 20 }} />
+        )}
+
         <Text
           style={{
             fontFamily: "Yantramanav_700Bold",
@@ -47,7 +59,7 @@ const FileUploadCardComponent = (data) => {
             color: "white",
           }}
         >
-          {information.title}
+          {data.title}
         </Text>
       </TouchableOpacity>
     </View>
