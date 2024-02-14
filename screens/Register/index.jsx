@@ -81,7 +81,7 @@ const Register = ({ navigation }) => {
         alignItems: "center",
         padding: 0,
         margin: 0,
-        
+        justifyContent: "center",   
       }}
     >
       {/*create account*/}
@@ -89,13 +89,12 @@ const Register = ({ navigation }) => {
       <Text
         style={{
           fontFamily: "RobotoSlab_400Regular",
-          fontSize: 30,
+          fontSize: 25,
           textAlign: "center",   
-          position:"relative",
+          position:"center",
           padding:10,
-          margin:10,
-         
-         
+          margin:10,     
+          justifyContent: "space-around",  
         }}
       >
         Create an Account
@@ -104,10 +103,9 @@ const Register = ({ navigation }) => {
         style={{
           width: "100%",
           display: "flex",
-          justifyContent: "space-around",
-          gap: 70,
+          justifyContent: "center",
+          gap: 50,
           padding:10,
-
         }}
       >
         <View
