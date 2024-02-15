@@ -50,8 +50,8 @@ const FileUploadCapture = ({ navigation }) => {
           style={{
             fontSize: 24,
             textAlign: "center",
-            marginTop: 20,
-            marginBottom: 10,
+            marginTop: 50,
+            marginBottom: 20,
             fontFamily: "RobotoSlab_400Regular",
           }}
         >
