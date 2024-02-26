@@ -9,6 +9,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { Entypo } from "@expo/vector-icons";
 
 const Register = ({ navigation }) => {
   const [date, setDate] = useState(new Date());
@@ -53,15 +54,19 @@ const Register = ({ navigation }) => {
   const onChangeUserData = (key, value) => {
     setNewUserData({ ...newUserData, [key]: value });
   };
-
+  const [rememberMe, setRememberMe] = useState(false);
+  const [password, setPassword] = useState(""); // Set a state for the password
+  const [showPassword, setShowPassword] = useState(false); // This state will be used to toggle the password visibility as a flag / boolean
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   //ES6 Arrow function
   const passwordChecker = () => {
     //checks the passwod if they are matched and return error message
     if (newUserData.password !== newUserData.verifyPassword) {
       return setErrorMessage("Password did not match");
     } else {
-      //exercise:
-      //if verifyPassword is empty, return no error message
+      newUserData.password === newUserData.verifyPassword;
       return setErrorMessage("");
     }
   };
@@ -81,7 +86,7 @@ const Register = ({ navigation }) => {
         alignItems: "center",
         padding: 0,
         margin: 0,
-        justifyContent: "center",   
+        justifyContent: "center",
       }}
     >
       {/*create account*/}
@@ -90,11 +95,11 @@ const Register = ({ navigation }) => {
         style={{
           fontFamily: "RobotoSlab_400Regular",
           fontSize: 25,
-          textAlign: "center",   
-          position:"center",
-          padding:10,
-          margin:10,     
-          justifyContent: "space-around",  
+          textAlign: "center",
+          position: "center",
+          padding: 10,
+          margin: 10,
+          justifyContent: "space-around",
         }}
       >
         Create an Account
@@ -105,7 +110,7 @@ const Register = ({ navigation }) => {
           display: "flex",
           justifyContent: "center",
           gap: 50,
-          padding:10,
+          padding: 10,
         }}
       >
         <View
@@ -117,7 +122,6 @@ const Register = ({ navigation }) => {
             justifyContent: "center",
             alignItems: "center",
             padding: 10,
-
           }}
         >
           <View
@@ -126,7 +130,6 @@ const Register = ({ navigation }) => {
               width: "90%",
               borderRadius: 10,
               alignItems: "left",
-              
             }}
           >
             <TextInput
@@ -235,6 +238,8 @@ const Register = ({ navigation }) => {
               borderWidth: 1,
               width: "90%",
               borderRadius: 10,
+              height: "11%",
+              flexDirection: "row",
             }}
           >
             <TextInput
@@ -242,7 +247,22 @@ const Register = ({ navigation }) => {
               secureTextEntry
               style={{ padding: 10 }}
               autoCapitalize="none"
+              onChangeText={(event) => onChangeUserData("password", event)}
+              
+
             />
+            {password !== "" && (
+              <TouchableOpacity
+                onPress={toggleShowPassword}
+                style={{ marginRight: 10 }}
+              >
+                {showPassword ? (
+                  <Entypo name="eye" size={16} color="black" />
+                ) : (
+                  <Entypo name="eye-with-line" size={16} color="black" />
+                )}
+              </TouchableOpacity>
+            )}
           </View>
           <View
             style={{
