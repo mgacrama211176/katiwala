@@ -91,12 +91,11 @@ const Register = ({ navigation }) => {
     >
       {/*create account*/}
 
-      <Text
+      <Text 
         style={{
           fontFamily: "RobotoSlab_400Regular",
           fontSize: 25,
           textAlign: "center",
-          position: "center",
           padding: 10,
           margin: 10,
           justifyContent: "space-around",
