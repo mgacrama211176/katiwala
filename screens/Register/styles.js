@@ -31,8 +31,9 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     borderWidth: 1,
-    width: 230,
+    width: "90%",
     borderRadius: 10,
+    alignItems: "left",
   },
   rememberForgotContainer: {
     display: "flex",
