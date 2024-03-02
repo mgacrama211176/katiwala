@@ -4,7 +4,6 @@ import {
   TouchableOpacity,
   TextInput,
   Pressable,
-  Platform,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -21,7 +20,6 @@ const Register = ({ navigation }) => {
   // const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showVerifyPassword, setShowVerifyPassword] = useState(false);
 
@@ -43,30 +41,19 @@ const Register = ({ navigation }) => {
     navigation.navigate("FaceVerify");
   };
 
-  const toggleDatepicker = () => {
-    setShowPicker(!showPicker);
-  };
-  // const onChange = ({ type }, selectedDate) => {
-  //   if (type == "set") {
-  //     const currentDate = selectedDate;
-  //     setDate(currentDate);
-
-  //     if (Platform.OS === "android") {
-  //       toggleDatepicker();
-  //       setDateOfBirth(currentDate.toDateString());
-  //     }
-  //   } else {
-  //     setShowPicker(!showPicker);
-  //   }
-  // };
-
   const onChangeUserData = (key, value) => {
-    if (key === "dateOfBirth") {
-      const currentDate = value.toDateString();
-      console.log(currentDate);
-      setNewUserData({ ...newUserData, [key]: currentDate });
-      setShowPicker(!showPicker);
-    } else setNewUserData({ ...newUserData, [key]: value });
+    if (key === "dateOfBirth" && value.type === "set") {
+      const convertedDate = new Date(
+        value.nativeEvent.timestamp
+      ).toDateString();
+      setNewUserData({
+        ...newUserData,
+        [key]: convertedDate, // store Date object directly
+      });
+      setShowPicker(false);
+    } else {
+      setNewUserData({ ...newUserData, [key]: value });
+    }
   };
 
   const passwordChecker = () => {
@@ -168,15 +155,15 @@ const Register = ({ navigation }) => {
                 onChangeText={(event) => onChangeUserData("phoneNumber", event)}
               />
             </View>
-            <View style={styles.inputStyle}>
+
+            <View style={[styles.inputStyle, { height: 50 }]}>
               {!showPicker && (
-                <Pressable onPress={toggleDatepicker}>
-                  <TextInput
-                    style={{ padding: 10 }}
-                    placeholder="Date of Birth"
-                    editable={false}
-                    value={newUserData.dateOfBirth}
-                  />
+                <Pressable onPress={() => setShowPicker(!showPicker)}>
+                  <Text style={{ padding: 14, color: "gray" }} editable={false}>
+                    {newUserData.dateOfBirth === ""
+                      ? "Date of Birth"
+                      : newUserData.dateOfBirth}
+                  </Text>
                 </Pressable>
               )}
 
@@ -184,10 +171,11 @@ const Register = ({ navigation }) => {
                 <DateTimePicker
                   mode="date"
                   display="spinner"
-                  value={new Date()}
-                  onChange={(event, selectedDate) =>
-                    onChangeUserData("dateOfBirth", selectedDate)
-                  }
+                  value={new Date() || newUserData.dateOfBirth}
+                  onChange={(selectedDate) => {
+                    onChangeUserData("dateOfBirth", selectedDate);
+                  }}
+                  style={{ width: "100%" }}
                 />
               )}
             </View>
