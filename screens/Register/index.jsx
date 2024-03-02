@@ -16,6 +16,10 @@ import styles from "./styles";
 //global component
 import { SecondaryButtonBGWhite } from "../Global components/GlobalButtons";
 
+//atom
+import { newUserAtom } from "../../recoil/NewUserAtom";
+import { useRecoilState } from "recoil";
+
 const Register = ({ navigation }) => {
   // const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
@@ -23,17 +27,7 @@ const Register = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showVerifyPassword, setShowVerifyPassword] = useState(false);
 
-  const [newUserData, setNewUserData] = useState({
-    status: "pending",
-    firstName: "",
-    lastName: "",
-    address: "",
-    email: "",
-    phoneNumber: "",
-    dateOfBirth: "",
-    password: "",
-    verifyPassword: "",
-  });
+  const [newUserData, setNewUserData] = useRecoilState(newUserAtom);
 
   //Navigate to next screen
   const navigateToNextScreen = () => {

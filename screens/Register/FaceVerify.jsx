@@ -10,9 +10,13 @@ import { Camera, CameraType } from "expo-camera";
 import * as FaceDetector from "expo-face-detector";
 import Icon from "react-native-vector-icons/Feather";
 
+//atom
+import { newUserAtom } from "../../recoil/NewUserAtom";
+import { useRecoilState } from "recoil";
+
 const FaceVerify = ({ navigation }) => {
+  const [newUserData, setNewUserData] = useRecoilState(newUserAtom);
   const [permission, setPermission] = useState(null);
-  const [image, setImage] = useState(null);
   const cameraReff = useRef(null);
   const [message, setMessage] = useState({
     text: "Press the camera to take a selfie",
@@ -49,8 +53,10 @@ const FaceVerify = ({ navigation }) => {
     try {
       if (cameraReff) {
         const data = await cameraReff.current.takePictureAsync(null);
-        setImage(data.uri);
         setMessage({ text: "Image captured", code: true });
+
+        // Save the image to the atom
+        setNewUserData({ ...newUserData, faceImage: data.uri });
 
         //proceed to next step
         navigation.navigate("FileUploadCapture");
