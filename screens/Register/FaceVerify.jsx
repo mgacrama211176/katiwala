@@ -48,7 +48,7 @@ const FaceVerify = ({ navigation }) => {
   const takeAPicture = async () => {
     if (!faceDetected) {
       setMessage({ text: "No face detected", code: false });
-      return;
+      // return;
     }
     try {
       if (cameraReff) {

@@ -13,5 +13,10 @@ export const newUserAtom = atom({
     password: "",
     verifyPassword: "",
     faceImage: "",
+    Biodata: "",
+    Barangay: "",
+    PoliceClearance: "",
+    governmentID: "",
+    OtherSkillsImages: "",
   },
 });

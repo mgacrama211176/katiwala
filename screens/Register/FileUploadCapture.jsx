@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   Image,
   SafeAreaView,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import * as DocumentPicker from "expo-document-picker";
@@ -13,7 +14,7 @@ import uploadImage from "../../assets/uploadImage.png";
 import FileUploadCardComponent from "../Global components/FileUploadCardComponent";
 
 const FileUploadCapture = ({ navigation }) => {
-  const [uploadedData, setUploadedData] = useState("");
+  const [uploadedSkills, setUploadedSkills] = useState([]);
 
   const [documents, setDocuments] = useState([
     {
@@ -46,12 +47,17 @@ const FileUploadCapture = ({ navigation }) => {
     let documentResult = await DocumentPicker.getDocumentAsync({});
     const { uri, name, type } = documentResult.assets[0];
 
-    setUploadedData({
-      uri: uri,
-      name: name,
-      type: type,
-    });
+    setUploadedSkills((prev) => [
+      ...prev,
+      {
+        uri: uri,
+        name: name,
+        mimeType: type,
+      },
+    ]);
   };
+
+  console.log(uploadedSkills);
 
   return (
     <SafeAreaView
@@ -60,6 +66,7 @@ const FileUploadCapture = ({ navigation }) => {
         display: "flex",
         height: "100%",
         justifyContent: "space-around",
+        overflow: "scroll",
       }}
     >
       <View>
@@ -137,6 +144,33 @@ const FileUploadCapture = ({ navigation }) => {
           <Image source={uploadImage} style={{ width: 100, height: 100 }} />
         </TouchableOpacity>
       </View>
+
+      <ScrollView
+        style={{
+          overflow: "scroll",
+          maxHeight: 200,
+        }}
+      >
+        <View
+          style={{
+            maxWidth: "100%",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 4,
+            flexWrap: "wrap",
+          }}
+        >
+          {uploadedSkills.map((item, index) => (
+            <Image
+              source={{ uri: item.uri }}
+              style={{ width: 100, height: 100 }}
+              key={index}
+            />
+          ))}
+        </View>
+      </ScrollView>
 
       <TouchableOpacity
         style={{

@@ -25,8 +25,6 @@ const FileUploadCardComponent = ({ data, setDocuments }) => {
     });
   };
 
-  console.log(data);
-
   return (
     <View>
       {/* Create components cards where the user can upload documents */}
