@@ -129,27 +129,24 @@ const Login = ({ navigation }) => {
           </Text>
         </View>
         {/* Register */}
-
-        <View
-          style={{ display: "flex", alignItems: "center", marginTop: "50%" }}
+      </View>
+      <View style={{ display: "flex", alignItems: "center" }}>
+        <Text
+          style={{ fontSize: 16, fontFamily: "QuattrocentoSans_400Regular" }}
         >
-          <Text
-            style={{ fontSize: 16, fontFamily: "QuattrocentoSans_400Regular" }}
-          >
-            Don't have an account?
-          </Text>
-          <Text
-            onPress={navigateToRegister}
-            style={{
-              fontFamily: "QuattrocentoSans_400Regular",
-              color: "#437456",
-              fontWeight: "bold",
-              fontSize: 18,
-            }}
-          >
-            Sign Up!
-          </Text>
-        </View>
+          Don't have an account?
+        </Text>
+        <Text
+          onPress={navigateToRegister}
+          style={{
+            fontFamily: "QuattrocentoSans_400Regular",
+            color: "#437456",
+            fontWeight: "bold",
+            fontSize: 18,
+          }}
+        >
+          Sign Up!
+        </Text>
       </View>
     </SafeAreaView>
   );

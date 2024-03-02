@@ -5,11 +5,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
+    justifyContent: "space-around",
   },
   imageContainer: {
     width: 300,
-    height: 300,
-    marginTop: 100,
+    height: "30%",
   },
   imageStyle: {
     width: "100%",
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   loginFormContainer: {
     width: "100%",
     display: "flex",
-    justifyContent: "center",
     gap: 10,
   },
   loginFormWrapper: {
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     borderWidth: 1,
-    width: 400,
+    width: "80%",
     borderRadius: 10,
   },
 
