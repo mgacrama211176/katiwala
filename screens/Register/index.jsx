@@ -24,7 +24,7 @@ const Register = ({ navigation }) => {
   const [showVerifyPassword, setShowVerifyPassword] = useState(false);
 
   const [newUserData, setNewUserData] = useState({
-    status: "",
+    status: "pending",
     firstName: "",
     lastName: "",
     address: "",
@@ -41,14 +41,18 @@ const Register = ({ navigation }) => {
     navigation.navigate("FaceVerify");
   };
 
+  const handleDateChange = (event, selectedDate) => {
+    if (selectedDate) {
+      const currentDate = selectedDate || new Date();
+      onChangeUserData("dateOfBirth", currentDate.toDateString());
+    }
+  };
+
   const onChangeUserData = (key, value) => {
-    if (key === "dateOfBirth" && value.type === "set") {
-      const convertedDate = new Date(
-        value.nativeEvent.timestamp
-      ).toDateString();
+    if (key === "dateOfBirth") {
       setNewUserData({
         ...newUserData,
-        [key]: convertedDate, // store Date object directly
+        [key]: value, // store Date object directly
       });
       setShowPicker(false);
     } else {
@@ -172,9 +176,7 @@ const Register = ({ navigation }) => {
                   mode="date"
                   display="spinner"
                   value={new Date() || newUserData.dateOfBirth}
-                  onChange={(selectedDate) => {
-                    onChangeUserData("dateOfBirth", selectedDate);
-                  }}
+                  onChange={handleDateChange}
                   style={{ width: "100%" }}
                 />
               )}
