@@ -127,7 +127,7 @@ const Register = ({ navigation }) => {
             </View>
             <View style={styles.inputStyle}>
               <TextInput
-                placeholder="Address"
+                placeholder="Complete Address"
                 style={{ padding: 10 }}
                 // always set text to smallcase
                 autoCapitalize="none"
@@ -136,7 +136,7 @@ const Register = ({ navigation }) => {
             </View>
             <View style={styles.inputStyle}>
               <TextInput
-                placeholder="Email Address"
+                placeholder="Email Address (optional)"
                 style={{ padding: 10 }}
                 // always set Email to smallcase
                 autoCapitalize="none"
@@ -194,7 +194,7 @@ const Register = ({ navigation }) => {
               <TextInput
                 placeholder="Password"
                 secureTextEntry={!showPassword}
-                style={{ padding: 10 }}
+                style={{ padding: 10, width: "90%" }}
                 autoCapitalize="none"
                 onChangeText={(event) => onChangeUserData("password", event)}
               />
@@ -226,7 +226,7 @@ const Register = ({ navigation }) => {
               <TextInput
                 placeholder="Re-type Password"
                 secureTextEntry={!showVerifyPassword}
-                style={{ padding: 10 }}
+                style={{ padding: 10, width: "90%" }}
                 autoCapitalize="none"
                 onChangeText={(event) =>
                   onChangeUserData("verifyPassword", event)

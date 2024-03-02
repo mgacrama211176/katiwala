@@ -43,6 +43,7 @@ export const SecondaryButtonBGWhite = (props) => {
         alignSelf: "center",
         backgroundColor: "#437456",
       }}
+      onPress={props.onPress}
     >
       <Text
         style={{
