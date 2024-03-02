@@ -37,6 +37,24 @@ const Register = ({ navigation }) => {
 
   //Navigate to next screen
   const navigateToNextScreen = () => {
+    // Before submitting the form, check if all the fields are filled
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "address",
+      "phoneNumber",
+      "dateOfBirth",
+      "password",
+      "verifyPassword",
+    ];
+    const isAnyFieldEmpty = requiredFields.some(
+      (field) => newUserData[field] === ""
+    );
+    if (isAnyFieldEmpty) {
+      setErrorMessage("Some fields are empty");
+      return;
+    }
+
     //navigate to face verify screen
     navigation.navigate("FaceVerify");
   };
