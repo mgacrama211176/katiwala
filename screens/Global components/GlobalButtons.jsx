@@ -39,7 +39,7 @@ export const SecondaryButtonBGWhite = (props) => {
         borderRadius: 10,
         justifyContent: "center",
         width: "60%",
-        height: 40,
+        height: 60,
         alignSelf: "center",
         backgroundColor: "#437456",
       }}
