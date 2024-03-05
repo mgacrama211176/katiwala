@@ -1,48 +1,97 @@
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
 import React, { useState } from "react";
 import * as DocumentPicker from "expo-document-picker";
 import uploadImage from "../../assets/uploadImage.png";
 
 //components
 import FileUploadCardComponent from "../Global components/FileUploadCardComponent";
+import { SecondaryButtonBGWhite } from "../Global components/GlobalButtons";
+
+//atom
+import { newUserAtom } from "../../recoil/NewUserAtom";
+import { useRecoilState } from "recoil";
 
 const FileUploadCapture = ({ navigation }) => {
-  const [uploadedData, setUploadedData] = useState("");
-
-  const uploadDocumentOnPress = async () => {
-    let documentResult = await DocumentPicker.getDocumentAsync({});
-    const { uri, name, type } = documentResult.assets[0];
-
-    setUploadedData({
-      uri: uri,
-      name: name,
-      type: type,
-    });
-  };
-
-  //Heading
-  const Requirements = [
+  const [uploadedSkills, setUploadedSkills] = useState([]);
+  const [newUserData, setNewUserData] = useRecoilState(newUserAtom);
+  const [documents, setDocuments] = useState([
     {
       title: "Biodata or Resume",
+      uri: "",
+      name: "",
+      mimeType: "",
     },
     {
       title: "Barangay Clearance",
+      uri: "",
+      name: "",
+      mimeType: "",
     },
     {
       title: "Police Clearance",
+      uri: "",
+      name: "",
+      mimeType: "",
     },
     {
       title: "Any Government ID",
+      uri: "",
+      name: "",
+      mimeType: "",
     },
-  ];
+  ]);
+
+  const uploadDocumentOnPress = async () => {
+    let documentResult = await DocumentPicker.getDocumentAsync({});
+    const { uri, name, mimeType } = documentResult.assets[0];
+
+    if (mimeType === "image/jpeg" || mimeType === "image/png") {
+      setUploadedSkills((prev) => [
+        ...prev,
+        {
+          uri: uri,
+          name: name,
+          mimeType: mimeType,
+        },
+      ]);
+    } else {
+      alert("We only accept jpeg or png files");
+      return;
+    }
+  };
+
+  const navigateToNextScreen = () => {
+    // Before submitting the form, check if all the fields are filled
+    const isAnyFieldEmpty = documents.some((doc) => doc.uri === "");
+    if (isAnyFieldEmpty) {
+      alert("Make sure to upload all documents");
+      return;
+    }
+    //add all the documents to the atom
+    setNewUserData({
+      ...newUserData,
+      documents: [documents],
+      uploadedSkills: [uploadedSkills],
+    });
+
+    navigation.navigate("RateGenerator");
+  };
 
   return (
-    <View
+    <SafeAreaView
       style={{
+        flex: 1,
         display: "flex",
-        paddingHorizontal: 20,
         height: "100%",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
+        overflow: "scroll",
       }}
     >
       <View>
@@ -69,9 +118,11 @@ const FileUploadCapture = ({ navigation }) => {
         </Text>
 
         {/* Create components cards where the user can upload documents */}
-        {Requirements.map((item, index) => {
-          return <FileUploadCardComponent data={item} key={index} />;
-        })}
+        {documents.map((item, index) => (
+          <View key={index}>
+            <FileUploadCardComponent data={item} setDocuments={setDocuments} />
+          </View>
+        ))}
 
         <View
           style={{ display: "flex", alignItems: "center", marginBottom: 10 }}
@@ -119,7 +170,34 @@ const FileUploadCapture = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity
+      <ScrollView
+        style={{
+          overflow: "scroll",
+          maxHeight: 200,
+        }}
+      >
+        <View
+          style={{
+            maxWidth: "100%",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 4,
+            flexWrap: "wrap",
+          }}
+        >
+          {uploadedSkills.map((item, index) => (
+            <Image
+              source={{ uri: item.uri }}
+              style={{ width: 100, height: 100 }}
+              key={index}
+            />
+          ))}
+        </View>
+      </ScrollView>
+
+      {/* <TouchableOpacity
         style={{
           backgroundColor: "#437456",
           borderWidth: 1,
@@ -142,8 +220,12 @@ const FileUploadCapture = ({ navigation }) => {
         >
           Next
         </Text>
-      </TouchableOpacity>
-    </View>
+      </TouchableOpacity> */}
+
+      <View>
+        <SecondaryButtonBGWhite Label={"Next"} onPress={navigateToNextScreen} />
+      </View>
+    </SafeAreaView>
   );
 };
 

@@ -16,6 +16,10 @@ import styles from "./styles";
 //global component
 import { SecondaryButtonBGWhite } from "../Global components/GlobalButtons";
 
+//atom
+import { newUserAtom } from "../../recoil/NewUserAtom";
+import { useRecoilState } from "recoil";
+
 const Register = ({ navigation }) => {
   // const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
@@ -23,20 +27,28 @@ const Register = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showVerifyPassword, setShowVerifyPassword] = useState(false);
 
-  const [newUserData, setNewUserData] = useState({
-    status: "pending",
-    firstName: "",
-    lastName: "",
-    address: "",
-    email: "",
-    phoneNumber: "",
-    dateOfBirth: "",
-    password: "",
-    verifyPassword: "",
-  });
+  const [newUserData, setNewUserData] = useRecoilState(newUserAtom);
 
   //Navigate to next screen
   const navigateToNextScreen = () => {
+    // Before submitting the form, check if all the fields are filled
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "address",
+      "phoneNumber",
+      "dateOfBirth",
+      "password",
+      "verifyPassword",
+    ];
+    const isAnyFieldEmpty = requiredFields.some(
+      (field) => newUserData[field] === ""
+    );
+    if (isAnyFieldEmpty) {
+      setErrorMessage("Some fields are empty");
+      return;
+    }
+
     //navigate to face verify screen
     navigation.navigate("FaceVerify");
   };
@@ -44,7 +56,20 @@ const Register = ({ navigation }) => {
   const handleDateChange = (event, selectedDate) => {
     if (selectedDate) {
       const currentDate = selectedDate || new Date();
-      onChangeUserData("dateOfBirth", currentDate.toDateString());
+
+      //selected date and current date must not be below 18 years old
+      const currentYear = new Date().getFullYear();
+      const selectedYear = currentDate.getFullYear();
+      let age = currentYear - selectedYear;
+
+      setShowPicker(false);
+      if (age < 18) {
+        setErrorMessage("You must be 18 years old and above");
+        alert("You must be 18 years old and above");
+        return;
+      } else {
+        onChangeUserData("dateOfBirth", currentDate.toDateString());
+      }
     }
   };
 

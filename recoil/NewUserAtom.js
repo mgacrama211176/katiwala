@@ -3,7 +3,7 @@ import { atom } from "recoil";
 export const newUserAtom = atom({
   key: "newUserAtom",
   default: {
-    status: "",
+    status: "pending",
     firstName: "",
     lastName: "",
     address: "",
@@ -12,5 +12,8 @@ export const newUserAtom = atom({
     dateOfBirth: "",
     password: "",
     verifyPassword: "",
+    faceImage: "",
+    uploadedSkills: [],
+    documents: [],
   },
 });
