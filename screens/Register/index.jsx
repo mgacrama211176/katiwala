@@ -60,14 +60,16 @@ const Register = ({ navigation }) => {
       //selected date and current date must not be below 18 years old
       const currentYear = new Date().getFullYear();
       const selectedYear = currentDate.getFullYear();
-      const age = currentYear - selectedYear;
+      let age = currentYear - selectedYear;
 
+      setShowPicker(false);
       if (age < 18) {
         setErrorMessage("You must be 18 years old and above");
+        alert("You must be 18 years old and above");
         return;
+      } else {
+        onChangeUserData("dateOfBirth", currentDate.toDateString());
       }
-
-      onChangeUserData("dateOfBirth", currentDate.toDateString());
     }
   };
 

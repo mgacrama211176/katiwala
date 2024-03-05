@@ -10,19 +10,24 @@ const FileUploadCardComponent = ({ data, setDocuments }) => {
 
     const { uri, name, mimeType } = documentResult.assets[0];
 
-    setDocuments((prev) => {
-      return prev.map((doc) => {
-        if (doc.title === data.title) {
-          return {
-            ...doc,
-            uri: uri,
-            name: name,
-            mimeType: mimeType,
-          };
-        }
-        return doc;
+    if (mimeType === "image/jpeg" || mimeType === "image/png") {
+      setDocuments((prev) => {
+        return prev.map((doc) => {
+          if (doc.title === data.title) {
+            return {
+              ...doc,
+              uri: uri,
+              name: name,
+              mimeType: mimeType,
+            };
+          }
+          return doc;
+        });
       });
-    });
+    } else {
+      alert("We only accept jpeg or png files");
+      return;
+    }
   };
 
   return (
