@@ -6,8 +6,6 @@ import "react-native-gesture-handler";
 import HomeScreen from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
-import PrivacyPolicy from "./screens/Policies/PrivacyPolicy";
-import TermsOfService from "./screens/Policies/TermsOfService";
 import FaceVerify from "./screens/Register/FaceVerify";
 import FileUploadCapture from "./screens/Register/FileUploadCapture";
 import RateGenerator from "./screens/Register/RateGenerator";
@@ -51,10 +49,9 @@ export const LoadFonts = () => {
 /*
 Since the app's theme is light, we can set the status bar to dark-content for now,
 If you want to add a dark mode later, you can use the useColorScheme hook to determine the theme and set the status bar accordingly.
-*/ 
-
-StatusBar.setBarStyle("dark-content", true);
-
+*/ export const StatusBarStyle = () => {
+  StatusBar.setBarStyle("dark-content", true);
+};
 
 //Navigation function
 export const AppStack = () => {
@@ -76,20 +73,7 @@ export const AppStack = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen 
-        name="PrivacyPolicy"
-        component={PrivacyPolicy}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen 
-        name="TermsOfService"
-        component={TermsOfService}
-        options={{
-          headerShown: false,
-        }}
-      />
+
       <Stack.Screen
         name="Register"
         component={Register}
