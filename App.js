@@ -49,9 +49,9 @@ export const LoadFonts = () => {
 /*
 Since the app's theme is light, we can set the status bar to dark-content for now,
 If you want to add a dark mode later, you can use the useColorScheme hook to determine the theme and set the status bar accordingly.
-*/ export const StatusBarStyle = () => {
-  StatusBar.setBarStyle("dark-content", true);
-};
+*/ 
+StatusBar.setBarStyle("dark-content", true);
+
 
 //Navigation function
 export const AppStack = () => {
