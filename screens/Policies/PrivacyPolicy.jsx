@@ -4,6 +4,10 @@ import { useNavigation } from "@react-navigation/native";
 import { styles } from "./styles/privacy-policy-styles";
 import { privayPolicyContent } from "./privacy-policy-contents";
 
+/* 
+PS: WILL ADD A COMMENT TO CREATE A NEW PR SINCE I ACCIDENTALLY MERGE IT TO THE MAIN BRANCH
+*/
+
 export default function PrivacyPolicy({ isVisible, onClose }) {
     const navigation = useNavigation();
     const [isChecked, setIsChecked] = useState(false);
