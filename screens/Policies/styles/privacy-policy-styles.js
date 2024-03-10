@@ -1,8 +1,15 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    mainContainer: {
+    modalContainer: {
         flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        borderRadius: 10,
     },
     header: {
         marginTop: 20,
@@ -60,6 +67,11 @@ export const styles = StyleSheet.create({
     checkboxText: {
         fontSize: 15,
     },
+    buttonContainer: {
+        marginHorizontal: 20,
+        marginBottom: 10,
+        gap: 8,
+    },
     buttonText: {
         textAlign: "center",
         color: "white",
@@ -77,8 +89,4 @@ export const styles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 10,
     },
-    buttonContainer: {
-        marginHorizontal: 20,
-        gap: 8,
-    }
 })

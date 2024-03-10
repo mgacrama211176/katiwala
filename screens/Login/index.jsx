@@ -22,8 +22,8 @@ const Login = ({ navigation }) => {
   const [message, setMessage] = useState("");
 
   const navigateToRegister = () => {
-    //navigate to privacy policy screen
-    navigation.navigate("PrivacyPolicy");
+    //navigate to register screen
+    navigation.navigate("Register");
   };
 
   // Method to toggle the password visibility

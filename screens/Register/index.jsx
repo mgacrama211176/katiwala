@@ -20,12 +20,16 @@ import { SecondaryButtonBGWhite } from "../Global components/GlobalButtons";
 import { newUserAtom } from "../../recoil/NewUserAtom";
 import { useRecoilState } from "recoil";
 
+// Privacy policy modal 
+import PrivacyPolicy from "../Policies/PrivacyPolicy";
+
 const Register = ({ navigation }) => {
   // const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showVerifyPassword, setShowVerifyPassword] = useState(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(true);
 
   const [newUserData, setNewUserData] = useRecoilState(newUserAtom);
 
@@ -98,6 +102,10 @@ const Register = ({ navigation }) => {
     }
   };
 
+  const closePrivacyPolicyModal = () => {
+    setShowPrivacyPolicy(false);
+  }
+
   useEffect(() => {
     passwordChecker();
   }, [newUserData]);
@@ -112,6 +120,9 @@ const Register = ({ navigation }) => {
           padding: 10,
         }}
       >
+
+        <PrivacyPolicy isVisible={showPrivacyPolicy} onClose={closePrivacyPolicyModal} />
+
         <View>
           <Text
             style={{
