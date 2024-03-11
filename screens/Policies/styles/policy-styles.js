@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+    /* Styles for Both Terms of Service and Privacy Policy */
     modalContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -16,7 +17,7 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
         alignItems: "center",
     },
-    privacyHeader: {
+    headerText: {
         fontSize: 24,
         fontFamily: "RobotoSlab_400Regular",
         textDecorationLine: "underline",
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    privacyContent: {
+    bodyContent: {
         width: "90%",
         backgroundColor: "#E5E4E2",
         borderRadius: 10,
@@ -42,9 +43,33 @@ export const styles = StyleSheet.create({
         fontFamily: "RobotoSlab_400Regular",
         marginBottom: 8,
     },
-    privacyText: {
+    sectionText: {
         fontSize: 15,
         textAlign: "justify",
+    },
+    buttonContainer: {
+        marginHorizontal: 20,
+        marginBottom: 10,
+        gap: 8,
+    },
+    buttonText: {
+        textAlign: "center",
+        color: "white",
+        fontSize: 18,
+    },
+    backButton: {
+        backgroundColor: "red",
+        paddingHorizontal: 22,
+        paddingVertical: 10,
+        borderRadius: 10,
+    },
+    /* Styles only applicable for Terms of Service Screen */
+    privacyPolicyLinkText: {
+        color: "#437456",
+        textDecorationLine: "underline",
+        fontSize: 16,
+        fontWeight: "500",
+        fontStyle: "italic",
     },
     checkboxContainer: {
         flexDirection: "row",
@@ -66,22 +91,6 @@ export const styles = StyleSheet.create({
     },
     checkboxText: {
         fontSize: 15,
-    },
-    buttonContainer: {
-        marginHorizontal: 20,
-        marginBottom: 10,
-        gap: 8,
-    },
-    buttonText: {
-        textAlign: "center",
-        color: "white",
-        fontSize: 18,
-    },
-    backButton: {
-        backgroundColor: "red",
-        paddingHorizontal: 22,
-        paddingVertical: 10,
-        borderRadius: 10,
     },
     acceptButton: {
         backgroundColor: "#437456",
