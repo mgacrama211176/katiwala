@@ -9,12 +9,22 @@ import React from "react";
 import EstimateCard from "../Global components/EstimateCard";
 import { SecondaryButtonBGWhite } from "../Global components/GlobalButtons";
 
+//atom
+import { newUserAtom } from "../../recoil/NewUserAtom";
+import { useRecoilState } from "recoil";
+
+//store gathered data to database using the API CreateUser
+import { createUser } from "../../api/CreateUser";
+
 const RateGenerator = () => {
+  const [newUserData, setNewUserData] = useRecoilState(newUserAtom);
   const handleDismissKeyboard = () => {
     Keyboard.dismiss();
   };
 
-  const navigateToNextScreen = () => {
+  const navigateToNextScreen = async () => {
+    const data = await createUser(newUserData);
+
     alert(
       "Welcome Katiwala! You have successfully registered. Please wait for the admin to approve your account."
     );
