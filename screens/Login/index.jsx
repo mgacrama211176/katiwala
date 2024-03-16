@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
+ 
 } from "react-native";
 import { useState } from "react";
 import logo from "../../assets/logo.png";
@@ -21,9 +22,9 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState(""); // Set a state for the password
   const [showPassword, setShowPassword] = useState(false); // This state will be used to toggle the password visibility as a flag / boolean
 
-  const navigateToRegister = () => {
+  const navigateToRoleSelection= () => {
     //navigate to register screen
-    navigation.navigate("Register");
+    navigation.navigate("RoleSelection");
   };
 
   // Method to toggle the password visibility
@@ -137,7 +138,7 @@ const Login = ({ navigation }) => {
           Don't have an account?
         </Text>
         <Text
-          onPress={navigateToRegister}
+          onPress={navigateToRoleSelection}
           style={{
             fontFamily: "QuattrocentoSans_400Regular",
             color: "#437456",

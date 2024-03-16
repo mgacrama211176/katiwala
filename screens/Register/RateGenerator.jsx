@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React from "react";
 import EstimateCard from "../Global components/EstimateCard";
-
+  
 const RateGenerator = () => {
   const handleDismissKeyboard = () => {
     Keyboard.dismiss();

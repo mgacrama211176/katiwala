@@ -9,6 +9,7 @@ import Register from "./screens/Register";
 import FaceVerify from "./screens/Register/FaceVerify";
 import FileUploadCapture from "./screens/Register/FileUploadCapture";
 import RateGenerator from "./screens/Register/RateGenerator";
+import RoleSelection from "./screens/Register/RoleSelection";
 
 //Navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -73,6 +74,13 @@ export const AppStack = () => {
           headerShown: false,
         }}
       />
+        <Stack.Screen
+        name="RoleSelection"
+        component={RoleSelection}
+        options={{
+          headerShown: false,
+         }}
+       />
 
       <Stack.Screen
         name="Register"
