@@ -20,6 +20,8 @@ import { SecondaryButtonBGWhite } from "../Global components/GlobalButtons";
 import { newUserAtom } from "../../recoil/NewUserAtom";
 import { useRecoilState } from "recoil";
 
+// Terms of Service Modal
+import TermsOfService from "../Policies/TermsOfService";
 // Privacy Policy Modal
 import PrivacyPolicy from "../Policies/PrivacyPolicy";
 //utils
@@ -31,7 +33,7 @@ const Register = ({ navigation }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showVerifyPassword, setShowVerifyPassword] = useState(false);
-  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(true);
+  const [showTermsOfService, setShowTermsOfService] = useState(true);
 
   const [newUserData, setNewUserData] = useRecoilState(newUserAtom);
 
@@ -113,8 +115,8 @@ const Register = ({ navigation }) => {
     }
   };
 
-  const onClosePrivacyPolicyModal = () => {
-    setShowPrivacyPolicy(false);
+  const closeTermsOfServiceModal = () => {
+    setShowTermsOfService(false);
   };
 
   useEffect(() => {
@@ -131,9 +133,9 @@ const Register = ({ navigation }) => {
           padding: 10,
         }}
       >
-        <PrivacyPolicy
-          isVisible={showPrivacyPolicy}
-          onClose={onClosePrivacyPolicyModal}
+        <TermsOfService
+          isVisible={showTermsOfService}
+          onClose={closeTermsOfServiceModal}
         />
 
         <View>
