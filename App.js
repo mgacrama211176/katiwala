@@ -3,6 +3,7 @@ import { RecoilRoot } from "recoil";
 import "react-native-gesture-handler";
 
 //screens
+import DashboardScreen from "./screens/Dashboard";
 import HomeScreen from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
@@ -61,6 +62,13 @@ export const AppStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
+       name="Dashboard"
+       component={DashboardScreen}
+       options={{
+       headerShown: false,
+       }}
+       />
+        <Stack.Screen
         name="Home"
         component={HomeScreen}
         options={{
