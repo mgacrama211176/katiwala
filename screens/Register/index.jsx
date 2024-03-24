@@ -22,6 +22,10 @@ import { useRecoilState } from "recoil";
 
 // Terms of Service Modal
 import TermsOfService from "../Policies/TermsOfService";
+// Privacy Policy Modal
+import PrivacyPolicy from "../Policies/PrivacyPolicy";
+//utils
+import { debounce } from "../../utils/debounce";
 
 const Register = ({ navigation }) => {
   // const [date, setDate] = useState(new Date());
@@ -78,16 +82,25 @@ const Register = ({ navigation }) => {
   };
 
   const onChangeUserData = (key, value) => {
+    if (key === "phoneNumber") {
+      //need to apply debounce here
+      const debounced = debounce(() => {
+        setNewUserData({ ...newUserData, [key]: value });
+      }, 2000);
+      debounced();
+    }
     if (key === "dateOfBirth") {
       setNewUserData({
         ...newUserData,
         [key]: value, // store Date object directly
       });
-      setShowPicker(false);
-    } else {
-      setNewUserData({ ...newUserData, [key]: value });
+      return setShowPicker(false);
     }
+
+    return setNewUserData({ ...newUserData, [key]: value });
   };
+
+  console.log(newUserData);
 
   const passwordChecker = () => {
     //checks the password if they are matched and return error message
@@ -104,7 +117,7 @@ const Register = ({ navigation }) => {
 
   const closeTermsOfServiceModal = () => {
     setShowTermsOfService(false);
-  }
+  };
 
   useEffect(() => {
     passwordChecker();
@@ -120,8 +133,10 @@ const Register = ({ navigation }) => {
           padding: 10,
         }}
       >
-
-        <TermsOfService isVisible={showTermsOfService} onClose={closeTermsOfServiceModal} />
+        <TermsOfService
+          isVisible={showTermsOfService}
+          onClose={closeTermsOfServiceModal}
+        />
 
         <View>
           <Text

@@ -15,5 +15,6 @@ export const newUserAtom = atom({
     faceImage: "",
     uploadedSkills: [],
     documents: [],
+    verified: false,
   },
 });
