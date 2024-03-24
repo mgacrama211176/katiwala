@@ -77,7 +77,7 @@ const RoleSelection = ({navigation}) => {
        padding: 10,
        textAlign: "center",
        fontFamily: "Yantramanav_700Bold",
-       fontSize: 24,
+       fontSize: 23,
      }}
      onPress={() => navigation.navigate("Register")}
    >
